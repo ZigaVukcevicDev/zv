@@ -7,10 +7,10 @@
     <c-stat>
       {{ /* Experince period */ }}
       <c-stat-number>
-        {{ experiencePeriod.webIndustry }}
+        {{ calculateExperiencePeriod('2007-06-01') }}
       </c-stat-number>
       <c-stat-number>
-        {{ experiencePeriod.programming }}
+        {{ calculateExperiencePeriod('2012-01-01') }}
       </c-stat-number>
       <c-button
         size="xs"
@@ -86,23 +86,6 @@ export default {
     }
   },
   computed: {
-    experiencePeriod () {
-      const startingDates = {
-        webIndustry: '2007-06-01',
-        programming: '2012-01-01',
-      }
-
-      const calculatePeriod = (date) => {
-        return Math.round(
-          (new Date() - new Date(date)) / 1000 / 60 / 60 / 24 / 365
-        );
-      }
-
-      return {
-        webIndustry: calculatePeriod(startingDates.webIndustry),
-        programming: calculatePeriod(startingDates.programming),
-      };
-    },
     coffeesDrank () {
       const currentLocalHour = new Date().getHours();
       let numberOfCups;
@@ -128,6 +111,12 @@ export default {
       return numberOfCups;
     }
   },
-  methods: {},
+  methods: {
+    calculateExperiencePeriod (startDate) {
+      return Math.round(
+        (new Date() - new Date(startDate)) / 1000 / 60 / 60 / 24 / 365
+      );
+    },
+  },
 }
 </script>
