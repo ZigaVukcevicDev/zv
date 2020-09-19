@@ -10,7 +10,7 @@ coffeesDrank () {
       break;
     // From 11:00 to 16:59
     case (currentLocalHour >= 11 && currentLocalHour <= 16):
-      numberOfCups = 3;
+      numberOfCups = 2;
       break;
     // From 17:00 to 23:59
     case (currentLocalHour >= 17 && currentLocalHour <= 23):
