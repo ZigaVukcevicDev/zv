@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <CHeading text-align="center" mb="4"> Žiga Vukčevič </CHeading>
+    <c-heading text-align="center" mb="4"> Žiga Vukčevič </c-heading>
     <c-avatar name="Žiga Vukčevič" src="" />
 
-    <CStat>
+    <c-stat>
       <c-stat-number>
         {{ experiencePeriod.webIndustry }}
       </c-stat-number>
@@ -15,7 +15,7 @@
         {{ coffeesDrank }}
       </c-stat-number>
       <nuxt-content :document="codeBlockCoffeesDrank" />
-    </CStat>
+    </c-stat>
   </div>
 </template>
 
@@ -50,20 +50,20 @@ export default {
   },
   computed: {
     experiencePeriod () {
-      const datesStart = {
+      const startingDates = {
         webIndustry: '2007-06-01',
         programming: '2012-01-01',
       }
 
-      const calculatePeriod = (dateStart) => {
+      const calculatePeriod = (date) => {
         return Math.round(
-          new Date(new Date() - new Date(dateStart)) / 1000 / 60 / 60 / 24 / 365
+          (new Date() - new Date(date)) / 1000 / 60 / 60 / 24 / 365
         );
       }
 
       return {
-        webIndustry: calculatePeriod(datesStart.webIndustry),
-        programming: calculatePeriod(datesStart.programming),
+        webIndustry: calculatePeriod(startingDates.webIndustry),
+        programming: calculatePeriod(startingDates.programming),
       };
     },
     coffeesDrank () {
