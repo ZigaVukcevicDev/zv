@@ -1,160 +1,96 @@
 <template>
   <div class="container">
-    <CBox
-      v-bind="mainStyles[colorMode]"
-      d="flex"
-      w="100vw"
-      h="100vh"
-      flex-dir="column"
-      justify-content="center"
-    >
-      <CHeading text-align="center" mb="4"> ⚡️ Hello chakra-ui/vue </CHeading>
-      <CFlex justify="center" direction="column" align="center">
-        <CBox mb="3">
-          <CIconButton
-            mr="3"
-            :icon="colorMode === 'light' ? 'moon' : 'sun'"
-            :aria-label="`Switch to ${
-              colorMode === 'light' ? 'dark' : 'light'
-            } mode`"
-            @click="toggleColorMode"
-          />
-          <CButton left-icon="info" variant-color="blue" @click="showToast">
-            Show Toast
-          </CButton>
-        </CBox>
-        <CAvatarGroup>
-          <CAvatar
-            name="Evan You"
-            alt="Evan You"
-            src="https://pbs.twimg.com/profile_images/1206997998900850688/cTXTQiHm_400x400.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar
-            name="Jonathan Bakebwa"
-            alt="Jonathan Bakebwa"
-            src="https://res.cloudinary.com/xtellar/image/upload/v1572857445/me_zqos4e.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar
-            name="Segun Adebayo"
-            alt="Segun Adebayo"
-            src="https://pbs.twimg.com/profile_images/1169353373012897802/skPUWd6e_400x400.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar src="pop">
-            <CAvatarBadge size="1.0em" border-color="papayawhip" bg="tomato" />
-          </CAvatar>
-        </CAvatarGroup>
-        <CButton
-          left-icon="close"
-          variant-color="red"
-          mt="3"
-          @click="showModal = true"
-        >
-          Delete Account
-        </CButton>
-        <CModal :is-open="showModal">
-          <CModalOverlay />
-          <CModalContent>
-            <CModalHeader>Are you sure?</CModalHeader>
-            <CModalBody>Deleting user cannot be undone</CModalBody>
-            <CModalFooter>
-              <CButton @click="showModal = false"> Cancel </CButton>
-              <CButton
-                margin-left="3"
-                variant-color="red"
-                @click="showModal = false"
-              >
-                Delete User
-              </CButton>
-            </CModalFooter>
-            <CModalCloseButton @click="showModal = false" />
-          </CModalContent>
-        </CModal>
-      </CFlex>
-    </CBox>
+    <CHeading text-align="center" mb="4"> Žiga Vukčevič </CHeading>
+    <c-avatar name="Žiga Vukčevič" src="" />
+
+    <CStat>
+      <c-stat-number>
+        {{ experiencePeriod.webIndustry }}
+      </c-stat-number>
+      <c-stat-number>
+        {{ experiencePeriod.programming }}
+      </c-stat-number>
+      <nuxt-content :document="codeBlockExperiencePeriod" />
+      <c-stat-number v-if="coffeesDrank">
+        {{ coffeesDrank }}
+      </c-stat-number>
+      <nuxt-content :document="codeBlockCoffeesDrank" />
+    </CStat>
   </div>
 </template>
 
 <script lang="js">
 import {
-  CBox,
-  CButton,
-  CAvatarGroup,
   CAvatar,
-  CAvatarBadge,
-  CModal,
-  CModalContent,
-  CModalOverlay,
-  CModalHeader,
-  CModalFooter,
-  CModalBody,
-  CModalCloseButton,
-  CIconButton,
-  CFlex,
-  CHeading
+  CHeading,
+  CStat,
+  CStatNumber
 } from '@chakra-ui/vue'
 
 export default {
   name: 'App',
   inject: ['$chakraColorMode', '$toggleColorMode'],
   components: {
-    CBox,
-    CButton,
-    CAvatarGroup,
     CAvatar,
-    CAvatarBadge,
-    CModal,
-    CModalContent,
-    CModalOverlay,
-    CModalHeader,
-    CModalFooter,
-    CModalBody,
-    CModalCloseButton,
-    CIconButton,
-    CFlex,
-    CHeading
+    CHeading,
+    CStat,
+    CStatNumber
+  },
+  async asyncData ({ $content }) {
+    const codeBlockExperiencePeriod = await $content('code-blocks/experience-period').fetch()
+    const codeBlockCoffeesDrank = await $content('code-blocks/coffees-drank').fetch()
+
+    return {
+      codeBlockExperiencePeriod,
+      codeBlockCoffeesDrank,
+    }
   },
   data () {
-    return {
-      showModal: false,
-      mainStyles: {
-        dark: {
-          bg: 'gray.700',
-          color: 'whiteAlpha.900'
-        },
-        light: {
-          bg: 'white',
-          color: 'gray.900'
-        }
-      }
-    }
+    return {}
   },
   computed: {
-    colorMode () {
-      return this.$chakraColorMode()
+    experiencePeriod () {
+      const datesStart = {
+        webIndustry: '2007-06-01',
+        programming: '2012-01-01',
+      }
+
+      const calculatePeriod = (dateStart) => {
+        return Math.round(
+          new Date(new Date() - new Date(dateStart)) / 1000 / 60 / 60 / 24 / 365
+        );
+      }
+
+      return {
+        webIndustry: calculatePeriod(datesStart.webIndustry),
+        programming: calculatePeriod(datesStart.programming),
+      };
     },
-    theme () {
-      return this.$chakraTheme()
-    },
-    toggleColorMode () {
-      return this.$toggleColorMode
+    coffeesDrank () {
+      const currentLocalHour = new Date().getHours();
+      let numberOfCups;
+
+      switch(true) {
+        // From 8:00 to 10:59
+        case (currentLocalHour >= 8 && currentLocalHour <= 10):
+          numberOfCups = 1;
+          break;
+        // From 11:00 to 16:59
+        case (currentLocalHour >= 11 && currentLocalHour <= 16):
+          numberOfCups = 2;
+          break;
+        // From 17:00 to 23:59
+        case (currentLocalHour >= 17 && currentLocalHour <= 23):
+          numberOfCups = 3;
+          break;
+        // Any other time (covers from 0:00 to 7:59 - usually sleeping at that time)
+        default:
+          numberOfCups = 0;
+      }
+
+      return numberOfCups;
     }
   },
-  methods: {
-    showToast () {
-      this.$toast({
-        title: 'Account created.',
-        description: "We've created your account for you.",
-        status: 'success',
-        duration: 10000,
-        isClosable: true
-      })
-    }
-  }
+  methods: {},
 }
 </script>
