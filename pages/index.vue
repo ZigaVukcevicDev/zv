@@ -3,19 +3,47 @@
     <c-heading text-align="center" mb="4"> Žiga Vukčevič </c-heading>
     <c-avatar name="Žiga Vukčevič" src="" />
 
+    {{ /* Stats */ }}
     <c-stat>
+      {{ /* Experince period */ }}
       <c-stat-number>
         {{ experiencePeriod.webIndustry }}
       </c-stat-number>
       <c-stat-number>
         {{ experiencePeriod.programming }}
       </c-stat-number>
-      <nuxt-content :document="codeBlockExperiencePeriod" />
+      <c-button
+        size="xs"
+        variant="outline"
+        variant-color="black"
+        @click="isVisible.experiencePeriod = !isVisible.experiencePeriod"
+      >
+        <span v-if="isVisible.experiencePeriod">Hide code</span>
+        <span v-if="!isVisible.experiencePeriod">Show code</span>
+      </c-button>
+      <c-collapse :is-open="isVisible.experiencePeriod">
+        <nuxt-content :document="codeBlockExperiencePeriod" />
+      </c-collapse>
+      {{ /* / Experince period */ }}
+      {{ /* Coffees drank */ }}
       <c-stat-number v-if="coffeesDrank">
         {{ coffeesDrank }}
       </c-stat-number>
-      <nuxt-content :document="codeBlockCoffeesDrank" />
+      <c-button
+        size="xs"
+        variant="outline"
+        variant-color="black"
+        @click="isVisible.coffeesDrank = !isVisible.coffeesDrank"
+      >
+        <span v-if="isVisible.coffeesDrank">Hide code</span>
+        <span v-if="!isVisible.coffeesDrank">Show code</span>
+      </c-button>
+      <c-collapse :is-open="isVisible.coffeesDrank">
+        <nuxt-content :document="codeBlockCoffeesDrank" />
+      </c-collapse>
+      {{ /* / Coffees drank */ }}
     </c-stat>
+    {{ /* / Stats */ }}
   </div>
 </template>
 
@@ -24,7 +52,9 @@ import {
   CAvatar,
   CHeading,
   CStat,
-  CStatNumber
+  CStatNumber,
+  CCollapse,
+  CButton
 } from '@chakra-ui/vue'
 
 export default {
@@ -34,7 +64,9 @@ export default {
     CAvatar,
     CHeading,
     CStat,
-    CStatNumber
+    CStatNumber,
+    CCollapse,
+    CButton
   },
   async asyncData ({ $content }) {
     const codeBlockExperiencePeriod = await $content('code-blocks/experience-period').fetch()
@@ -46,7 +78,12 @@ export default {
     }
   },
   data () {
-    return {}
+    return {
+      isVisible: {
+        experiencePeriod: false,
+        coffeesDrank: false,
+      }
+    }
   },
   computed: {
     experiencePeriod () {
