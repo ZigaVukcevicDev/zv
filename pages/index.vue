@@ -41,57 +41,59 @@
     </c-box>
     {{ /* / Header */ }}
 
-    {{ /* Stats */ }}
-    {{ /* Experince period */ }}
-    <c-stat>
-      <c-stat-number>
-        {{ calculateExperiencePeriod('2007-06-01') }}
-      </c-stat-number>
-      <c-stat-label>years in the web industry</c-stat-label>
-      <c-stat-number>
-        {{ calculateExperiencePeriod('2012-01-01') }}
-      </c-stat-number>
-      <c-stat-label>years of active programming</c-stat-label>
-    </c-stat>
-    <c-button
-      size="xs"
-      variant="outline"
-      variant-color="black"
-      @click="isVisible.experiencePeriod = !isVisible.experiencePeriod"
-    >
-      <span v-if="isVisible.experiencePeriod">Hide code</span>
-      <span v-if="!isVisible.experiencePeriod">Show code</span>
-    </c-button>
-    <c-collapse :is-open="isVisible.experiencePeriod">
-      <nuxt-content :document="codeBlockExperiencePeriod" />
-    </c-collapse>
-    {{ /* / Experince period */ }}
-    {{ /* Number of coffee cups drank */ }}
-    <c-stat v-if="numberOfCoffeeCupsDrank > 0">
-      <c-stat-number>
-        {{ numberOfCoffeeCupsDrank }}
-      </c-stat-number>
-      <c-stat-label>
-        cup<span v-if="numberOfCoffeeCupsDrank > 1">s</span>
-        of coffee drank today
-      </c-stat-label>
-    </c-stat>
-    <c-button
-      size="xs"
-      variant="outline"
-      variant-color="black"
-      @click="
-        isVisible.numberOfCoffeeCupsDrank = !isVisible.numberOfCoffeeCupsDrank
-      "
-    >
-      <span v-if="isVisible.numberOfCoffeeCupsDrank">Hide code</span>
-      <span v-if="!isVisible.numberOfCoffeeCupsDrank">Show code</span>
-    </c-button>
-    <c-collapse :is-open="isVisible.numberOfCoffeeCupsDrank">
-      <nuxt-content :document="codeBlockNumberOfCoffeeCupsDrank" />
-    </c-collapse>
-    {{ /* / Number of coffee cups drank */ }}
-    {{ /* / Stats */ }}
+    <c-box width="100%" padding="10">
+      {{ /* Stats */ }}
+      {{ /* Experince period */ }}
+      <c-stat>
+        <c-stat-number>
+          {{ calculateExperiencePeriod('2007-06-01') }}
+        </c-stat-number>
+        <c-stat-label>years in the web industry</c-stat-label>
+        <c-stat-number>
+          {{ calculateExperiencePeriod('2012-01-01') }}
+        </c-stat-number>
+        <c-stat-label>years of active programming</c-stat-label>
+      </c-stat>
+      <c-button
+        size="xs"
+        variant="outline"
+        variant-color="black"
+        @click="isVisible.experiencePeriod = !isVisible.experiencePeriod"
+      >
+        <span v-if="isVisible.experiencePeriod">Hide code</span>
+        <span v-if="!isVisible.experiencePeriod">Show code</span>
+      </c-button>
+      <c-collapse :is-open="isVisible.experiencePeriod">
+        <nuxt-content :document="codeBlockExperiencePeriod" />
+      </c-collapse>
+      {{ /* / Experince period */ }}
+      {{ /* Number of coffee cups drank */ }}
+      <c-stat v-if="numberOfCoffeeCupsDrank > 0">
+        <c-stat-number>
+          {{ numberOfCoffeeCupsDrank }}
+        </c-stat-number>
+        <c-stat-label>
+          cup<span v-if="numberOfCoffeeCupsDrank > 1">s</span>
+          of coffee drank today
+        </c-stat-label>
+      </c-stat>
+      <c-button
+        size="xs"
+        variant="outline"
+        variant-color="black"
+        @click="
+          isVisible.numberOfCoffeeCupsDrank = !isVisible.numberOfCoffeeCupsDrank
+        "
+      >
+        <span v-if="isVisible.numberOfCoffeeCupsDrank">Hide code</span>
+        <span v-if="!isVisible.numberOfCoffeeCupsDrank">Show code</span>
+      </c-button>
+      <c-collapse :is-open="isVisible.numberOfCoffeeCupsDrank">
+        <nuxt-content :document="codeBlockNumberOfCoffeeCupsDrank" />
+      </c-collapse>
+      {{ /* / Number of coffee cups drank */ }}
+      {{ /* / Stats */ }}
+    </c-box>
   </div>
 </template>
 
