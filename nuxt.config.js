@@ -1,3 +1,5 @@
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -38,6 +40,13 @@ export default {
     '@nuxtjs/emotion',
     '@nuxt/content',
   ],
+
+  chakra: {
+    icons: {
+      iconPack: 'fa',
+      iconSet: { faExternalLinkAlt },
+    },
+  },
 
   content: {},
 

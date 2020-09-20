@@ -1,7 +1,26 @@
+<br />
+<p>Template</p>
+
+```html
+<c-stat>
+  <c-stat-number>
+    {{ calculateExperiencePeriod('2007-06-01') }}
+  </c-stat-number>
+  <c-stat-label>years in the web industry</c-stat-label>
+</c-stat>
+```
+
+<p>Script</p>
+
 ```js
-calculateExperiencePeriod (startDate) {
-  return Math.round(
-    (new Date() - new Date(startDate)) / 1000 / 60 / 60 / 24 / 365
-  );
+methods: {
+  calculateExperiencePeriod (startDate) {
+    const numberOfYears = Math.round(
+      (new Date() - new Date(startDate)) / 1000 / 60 / 60 / 24 / 365
+    );
+    const suffixSign = '+';
+
+    return `${numberOfYears}${suffixSign}`;
+  },
 },
 ```
