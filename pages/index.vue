@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <c-heading text-align="center" mb="4"> Žiga Vukčevič </c-heading>
-    <c-avatar name="Žiga Vukčevič" src="" />
 
     {{ /* Stats */ }}
     <c-stat>
@@ -49,7 +48,6 @@
 
 <script lang="js">
 import {
-  CAvatar,
   CHeading,
   CStat,
   CStatNumber,
@@ -61,7 +59,6 @@ export default {
   name: 'App',
   inject: ['$chakraColorMode', '$toggleColorMode'],
   components: {
-    CAvatar,
     CHeading,
     CStat,
     CStatNumber,
