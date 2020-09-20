@@ -42,5 +42,4 @@ computed: {
     return numberOfCups;
   }
 },
-
 ```
