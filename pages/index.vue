@@ -15,8 +15,8 @@
         </c-text>
       </c-heading>
       <c-text margin-top="10">
-        I have been working in the web industry over a decade. My current spot
-        is at company
+        I have been working in the web industry almost a decade and half. My
+        current spot is at company
         <c-link href="https://www.endava.com/" is-external>
           Endava <c-icon name="external-link-alt" margin-left="2px" />
         </c-link>
