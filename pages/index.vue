@@ -9,10 +9,12 @@
     {{ /* Header */ }}
     <c-box background-color="black" width="100%" padding="10" color="white">
       <c-heading as="h1">
-        Hi,<br />my name is Žiga and I'm a <strong>Lead engineer</strong>,
-        focused on front-end web development.
+        Hi,<br />my name is Žiga and I'm a <strong>Lead engineer</strong>,<br />
+        <c-text as="span" font-size="lg">
+          focused on front-end web development.
+        </c-text>
       </c-heading>
-      <c-text>
+      <c-text margin-top="10">
         I have been working in the web industry over a decade. My current spot
         is at company
         <c-link href="https://www.endava.com/" is-external>
@@ -42,8 +44,7 @@
     {{ /* / Header */ }}
 
     <c-box width="100%" padding="10">
-      {{ /* Stats */ }}
-      {{ /* Experince period */ }}
+      {{ /* Stats - experince period */ }}
       <c-stat>
         <c-stat-number>
           {{ calculateExperiencePeriod('2007-06-01') }}
@@ -66,8 +67,8 @@
       <c-collapse :is-open="isVisible.experiencePeriod">
         <nuxt-content :document="codeBlockExperiencePeriod" />
       </c-collapse>
-      {{ /* / Experince period */ }}
-      {{ /* Number of coffee cups drank */ }}
+      {{ /* / Stats - experince period */ }}
+      {{ /* Stats - number of coffee cups drank */ }}
       <c-stat v-if="numberOfCoffeeCupsDrank > 0">
         <c-stat-number>
           {{ numberOfCoffeeCupsDrank }}
@@ -91,8 +92,20 @@
       <c-collapse :is-open="isVisible.numberOfCoffeeCupsDrank">
         <nuxt-content :document="codeBlockNumberOfCoffeeCupsDrank" />
       </c-collapse>
-      {{ /* / Number of coffee cups drank */ }}
-      {{ /* / Stats */ }}
+      {{ /* / Stats - number of coffee cups drank */ }}
+      {{ /* My main skills */ }}
+      <c-heading as="h2" margin-top="10">My main skills</c-heading>
+      <c-list style-type="disc" margin-top="5">
+        <c-list-item>
+          understanding of developing for the web and a
+          <strong>careful eye for design</strong>,
+        </c-list-item>
+        <c-list-item>
+          ability to <strong>translate designs</strong> into semantic,
+          accessible front-end code,
+        </c-list-item>
+      </c-list>
+      {{ /* / My main skills */ }}
     </c-box>
   </div>
 </template>
@@ -108,7 +121,9 @@ import {
   CBox,
   CText,
   CLink,
-  CIcon
+  CIcon,
+  CList,
+  CListItem
 } from '@chakra-ui/vue'
 
 export default {
@@ -124,7 +139,9 @@ export default {
     CBox,
     CText,
     CLink,
-    CIcon
+    CIcon,
+    CList,
+    CListItem
   },
   async asyncData ({ $content }) {
     const codeBlockExperiencePeriod = await $content('code-blocks/experience-period').fetch()
