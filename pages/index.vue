@@ -11,7 +11,7 @@
       <c-heading as="h1">
         Hi,<br />my name is Žiga and I'm a <strong>Lead engineer</strong>,<br />
         <c-text as="span" font-size="lg">
-          focused on front-end web development.
+          mostly focused on front-end web development.
         </c-text>
       </c-heading>
       <c-text margin-top="10">
