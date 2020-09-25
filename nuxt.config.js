@@ -42,6 +42,19 @@ export default {
     // '@nuxtjs/prismic',
   ],
 
+  // generate: {
+  //   routes: function() {
+  //     const fs = require('fs');
+  //     const path = require('path');
+  //     return fs.readdirSync('./content/blog').map(file => {
+  //       return {
+  //         route: `/blog/${path.parse(file).name}`, // Return the slug
+  //         payload: require(`./content/blog/${file}`),
+  //       };
+  //     });
+  //   },
+  // },
+
   // Prismic settings
   // prismic: {
   //   endpoint: 'https://zv-prismic.cdn.prismic.io/api/v2',
@@ -61,9 +74,4 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
-
-  // Netlify reads a 404.html, Nuxt will load as an SPA
-  generate: {
-    fallback: '404.html',
-  },
 }

@@ -50,7 +50,7 @@
           {{ calculateExperiencePeriod('2007-06-01') }}
         </c-stat-number>
         <c-stat-label>
-          <!-- {{ document['stats-web-industry'][0].text }} -->
+          {{ document[0].stats['stat-1'] }}
         </c-stat-label>
         <c-stat-number>
           {{ calculateExperiencePeriod('2012-01-01') }}
@@ -133,7 +133,7 @@
       <br />
       <hr />
       <br />
-      <!-- <pre>{{ document }}</pre> -->
+      <pre>{{ document }}</pre>
     </c-box>
   </div>
 </template>
@@ -177,10 +177,12 @@ export default {
     };
   },
   async asyncData ({ $content }) {
+    const document = await $content("homepage").fetch();
     const codeBlockExperiencePeriod = await $content('code-blocks/experience-period').fetch();
     const codeBlockNumberOfCoffeeCupsDrank = await $content('code-blocks/number-of-coffee-cups-drank').fetch();
 
     return {
+      document,
       codeBlockExperiencePeriod,
       codeBlockNumberOfCoffeeCupsDrank,
     }

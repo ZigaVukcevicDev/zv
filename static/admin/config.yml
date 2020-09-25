@@ -19,3 +19,19 @@ collections:
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'homepage'
+    label: 'Homepage'
+    format: 'json'
+    folder: 'content/homepage'
+    create: true
+    slug: ''
+    editor:
+      preview: false
+    fields:
+      - label: "Stats"
+        name: "stats"
+        widget: "object"
+        fields:
+          - { label: "Label 1", name: "stat-1", widget: "string", required: true }
+          - { label: "Label 2", name: "stat-2", widget: "string", required: true }
+          - { label: "Label 3", name: "stat-3", widget: "string", required: true }
