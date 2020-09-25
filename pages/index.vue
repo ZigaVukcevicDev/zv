@@ -50,13 +50,13 @@
           {{ calculateExperiencePeriod('2007-06-01') }}
         </c-stat-number>
         <c-stat-label>
-          {{ document['stats-web-industry'][0].text }}
+          <!-- {{ document['stats-web-industry'][0].text }} -->
         </c-stat-label>
         <c-stat-number>
           {{ calculateExperiencePeriod('2012-01-01') }}
         </c-stat-number>
         <c-stat-label>
-          {{ document['stats-programming'][0].text }}
+          <!-- {{ document['stats-programming'][0].text }} -->
         </c-stat-label>
       </c-stat>
       <c-button
@@ -101,16 +101,16 @@
       <c-heading as="h2" margin-top="10">My main skills</c-heading>
       <c-list style-type="disc" margin-top="5">
         {{ /* Fix key */ }}
-        <c-list-item v-for="item in document['my-main-skills']" :key="item.key">
+        <!-- <c-list-item v-for="item in document['my-main-skills']" :key="item.key"> -->
           <!-- {{ item.skill[0].text }} -->
-        </c-list-item>
+        <!-- </c-list-item> -->
       </c-list>
       {{ /* / My main skills */ }}
       {{ /* My skills output */ }}
       <c-heading as="h2" margin-top="10">
         My skills to produce visual output
       </c-heading>
-      <c-list style-type="disc" margin-top="5">
+      <!-- <c-list style-type="disc" margin-top="5">
         {{ /* Fix key */ }}
         <c-list-item v-for="item in composeListOfSkills" :key="item.key">
           {{ item.text }}
@@ -127,13 +127,13 @@
             </c-list-item>
           </c-list>
         </c-list-item>
-      </c-list>
+      </c-list> -->
       {{ /* / My skills output */ }}
 
       <br />
       <hr />
       <br />
-      <pre>{{ document }}</pre>
+      <!-- <pre>{{ document }}</pre> -->
     </c-box>
   </div>
 </template>
@@ -176,20 +176,13 @@ export default {
       script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
     };
   },
-  async asyncData ({ $prismic, error, $content }) {
-    try {
-      const document = (await $prismic.api.getSingle('homepage')).data;
-      const codeBlockExperiencePeriod = await $content('code-blocks/experience-period').fetch();
-      const codeBlockNumberOfCoffeeCupsDrank = await $content('code-blocks/number-of-coffee-cups-drank').fetch();
+  async asyncData ({ $content }) {
+    const codeBlockExperiencePeriod = await $content('code-blocks/experience-period').fetch();
+    const codeBlockNumberOfCoffeeCupsDrank = await $content('code-blocks/number-of-coffee-cups-drank').fetch();
 
-      return {
-        document,
-        codeBlockExperiencePeriod,
-        codeBlockNumberOfCoffeeCupsDrank,
-      }
-    } catch (e) {
-      // Fix this to more generic error
-      error({ statusCode: 404, message: 'Page not found' })
+    return {
+      codeBlockExperiencePeriod,
+      codeBlockNumberOfCoffeeCupsDrank,
     }
   },
   data () {
