@@ -171,6 +171,11 @@ export default {
     CList,
     CListItem
   },
+  head() {
+    return {
+      script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
+    };
+  },
   async asyncData ({ $prismic, error, $content }) {
     try {
       const document = (await $prismic.api.getSingle('homepage')).data;
