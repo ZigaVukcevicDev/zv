@@ -28,8 +28,10 @@
     "@nuxt/content": "^1.9.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/emotion": "^0.0.1",
+    "@nuxtjs/prismic": "^1.2.4",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.5"
+    "nuxt": "^2.14.6",
+    "prismic-dom": "^2.2.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",

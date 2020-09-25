@@ -49,11 +49,15 @@
         <c-stat-number>
           {{ calculateExperiencePeriod('2007-06-01') }}
         </c-stat-number>
-        <c-stat-label>years in the web industry</c-stat-label>
+        <c-stat-label>
+          {{ document['stats-web-industry'][0].text }}
+        </c-stat-label>
         <c-stat-number>
           {{ calculateExperiencePeriod('2012-01-01') }}
         </c-stat-number>
-        <c-stat-label>years of active programming</c-stat-label>
+        <c-stat-label>
+          {{ document['stats-programming'][0].text }}
+        </c-stat-label>
       </c-stat>
       <c-button
         size="xs"
@@ -96,16 +100,40 @@
       {{ /* My main skills */ }}
       <c-heading as="h2" margin-top="10">My main skills</c-heading>
       <c-list style-type="disc" margin-top="5">
-        <c-list-item>
-          understanding of developing for the web and a
-          <strong>careful eye for design</strong>,
-        </c-list-item>
-        <c-list-item>
-          ability to <strong>translate designs</strong> into semantic,
-          accessible front-end code,
+        {{ /* Fix key */ }}
+        <c-list-item v-for="item in document['my-main-skills']" :key="item.key">
+          <!-- {{ item.skill[0].text }} -->
         </c-list-item>
       </c-list>
       {{ /* / My main skills */ }}
+      {{ /* My skills output */ }}
+      <c-heading as="h2" margin-top="10">
+        My skills to produce visual output
+      </c-heading>
+      <c-list style-type="disc" margin-top="5">
+        {{ /* Fix key */ }}
+        <c-list-item v-for="item in composeListOfSkills" :key="item.key">
+          {{ item.text }}
+          <c-list
+            v-if="item.children.length > 0"
+            style-type="disc"
+            margin-left="5"
+          >
+            <c-list-item
+              v-for="itemChild in item.children"
+              :key="itemChild.key"
+            >
+              {{ itemChild }}
+            </c-list-item>
+          </c-list>
+        </c-list-item>
+      </c-list>
+      {{ /* / My skills output */ }}
+
+      <br />
+      <hr />
+      <br />
+      <pre>{{ document }}</pre>
     </c-box>
   </div>
 </template>
@@ -143,13 +171,20 @@ export default {
     CList,
     CListItem
   },
-  async asyncData ({ $content }) {
-    const codeBlockExperiencePeriod = await $content('code-blocks/experience-period').fetch()
-    const codeBlockNumberOfCoffeeCupsDrank = await $content('code-blocks/number-of-coffee-cups-drank').fetch()
+  async asyncData ({ $prismic, error, $content }) {
+    try {
+      const document = (await $prismic.api.getSingle('homepage')).data;
+      const codeBlockExperiencePeriod = await $content('code-blocks/experience-period').fetch();
+      const codeBlockNumberOfCoffeeCupsDrank = await $content('code-blocks/number-of-coffee-cups-drank').fetch();
 
-    return {
-      codeBlockExperiencePeriod,
-      codeBlockNumberOfCoffeeCupsDrank,
+      return {
+        document,
+        codeBlockExperiencePeriod,
+        codeBlockNumberOfCoffeeCupsDrank,
+      }
+    } catch (e) {
+      // Fix this to more generic error
+      error({ statusCode: 404, message: 'Page not found' })
     }
   },
   data () {
@@ -184,6 +219,24 @@ export default {
       }
 
       return numberOfCups;
+    },
+    composeListOfSkills () {
+      const list = [];
+
+      this.document['my-skills-output'].forEach((item, index) => {
+        item['skills-list'].forEach(itemChild => {
+          if (item.level_of_list === 'Level 1') {
+            list.push({
+              text: itemChild.text,
+              children: [],
+            });
+          } else if (item.level_of_list === 'Level 2') {
+            list[index].children.push(itemChild.text)
+          }
+        });
+      });
+
+      return list;
     }
   },
   methods: {

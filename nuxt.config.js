@@ -39,8 +39,17 @@ export default {
     // https://go.nuxtjs.dev/emotion
     '@nuxtjs/emotion',
     '@nuxt/content',
+    // '@nuxtjs/prismic',
   ],
 
+  // Prismic settings
+  // prismic: {
+  //   endpoint: 'https://zv-prismic.cdn.prismic.io/api/v2',
+  //   linkResolver: '@/plugins/link-resolver',
+  //   htmlSerializer: '@/plugins/html-serializer',
+  // },
+
+  // Chakra settings
   chakra: {
     icons: {
       iconPack: 'fa',
@@ -52,4 +61,9 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
+
+  // Netlify reads a 404.html, Nuxt will load as an SPA
+  generate: {
+    fallback: '404.html',
+  },
 }
