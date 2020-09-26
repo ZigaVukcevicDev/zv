@@ -184,18 +184,16 @@ export default {
     };
   },
   async asyncData ({ $content }) {
-    const doc = {
-      header: await $content("header").fetch(),
-      stats: await $content("statistics").fetch(),
-    };
+    const docHeader = await $content("header").fetch();
+    const docStats = await $content("statistics").fetch();
 
     const codeBlockExperiencePeriod = await $content('code-blocks/experience-period').fetch();
     const codeBlockNumberOfCoffeeCupsDrank = await $content('code-blocks/number-of-coffee-cups-drank').fetch();
 
     return {
       doc: {
-        header: doc.header[0],
-        stats: doc.stats[0],
+        header: docHeader[0],
+        stats: docStats[0],
       },
       codeBlockExperiencePeriod,
       codeBlockNumberOfCoffeeCupsDrank,

@@ -9,7 +9,7 @@ collections:
   - name: 'header'
     label: 'Header'
     format: 'json'
-    folder: 'content/segments'
+    folder: 'content/header'
     create: true
     slug: ''
     editor:
@@ -40,7 +40,7 @@ collections:
   - name: 'statistics'
     label: 'Statistics'
     format: 'json'
-    folder: 'content/segments'
+    folder: 'content/statistics'
     create: true
     slug: ''
     editor:
