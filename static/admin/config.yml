@@ -6,48 +6,42 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'header'
-    label: 'Header'
-    format: 'json'
-    folder: 'content/header'
-    create: true
-    slug: ''
+  - label: "Segments"
+    name: "segments"
     editor:
       preview: false
-    fields:
-      - label: "Introduction"
-        name: "intro"
-        widget: "object"
+    files:
+      - name: 'header'
+        label: 'Header'
+        format: 'json'
+        file: 'content/header.json'
         fields:
-        - label: "Heading"
-          name: "heading"
-          widget: "object"
-          fields:
-            - { label: "Part 1", name: "part1", widget: "string", required: true }
-            - { label: "Part 2", name: "part2", widget: "string", required: true }
-        - label: "Additional text"
-          name: "additionalText"
-          widget: "object"
-          fields:
-            - { label: "Text before", name: "textBefore", widget: "string", required: true }
-            - label: "Link"
-              name: "link"
+          - label: "Introduction"
+            name: "intro"
+            widget: "object"
+            fields:
+            - label: "Heading"
+              name: "heading"
               widget: "object"
               fields:
-                - { label: "Text", name: "text", widget: "string", required: true }
-                - { label: "Url", name: "href", widget: "string", required: true }
-            - { label: "Text after", name: "textAfter", widget: "string", required: true }
-  - name: 'statistics'
-    label: 'Statistics'
-    format: 'json'
-    folder: 'content/statistics'
-    create: true
-    slug: ''
-    editor:
-      preview: false
-    fields:
-      - label: "Statistics"
-        name: "stats"
+                - { label: "Part 1", name: "part1", widget: "string", required: true }
+                - { label: "Part 2", name: "part2", widget: "string", required: true }
+            - label: "Additional text"
+              name: "additionalText"
+              widget: "object"
+              fields:
+                - { label: "Text before", name: "textBefore", widget: "string", required: true }
+                - label: "Link"
+                  name: "link"
+                  widget: "object"
+                  fields:
+                    - { label: "Text", name: "text", widget: "string", required: true }
+                    - { label: "Url", name: "href", widget: "string", required: true }
+                - { label: "Text after", name: "textAfter", widget: "string", required: true }
+      - name: 'Statistics'
+        label: 'Statistics'
+        format: 'json'
+        file: 'content/statistics.json'
         widget: "object"
         fields:
           - { label: "Text 1", name: "part1", widget: "string", required: true }

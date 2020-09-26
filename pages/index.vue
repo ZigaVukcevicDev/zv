@@ -46,20 +46,21 @@
     </c-box>
     {{ /* / Header */ }}
 
+    {{ /* Stats  */ }}
     <c-box width="100%" padding="10">
-      {{ /* Stats - experince period */ }}
+      {{ /* Experince period */ }}
       <c-stat>
         <c-stat-number>
           {{ calculateExperiencePeriod('2007-06-01') }}
         </c-stat-number>
         <c-stat-label>
-          {{ doc.stats.stats.part1 }}
+          {{ doc.stats.part1 }}
         </c-stat-label>
         <c-stat-number>
           {{ calculateExperiencePeriod('2012-01-01') }}
         </c-stat-number>
         <c-stat-label>
-          {{ doc.stats.stats.part2 }}
+          {{ doc.stats.part2 }}
         </c-stat-label>
       </c-stat>
       <c-button
@@ -74,18 +75,18 @@
       <c-collapse :is-open="isVisible.experiencePeriod">
         <nuxt-content :document="codeBlockExperiencePeriod" />
       </c-collapse>
-      {{ /* / Stats - experince period */ }}
-      {{ /* Stats - number of coffee cups drank */ }}
+      {{ /* / Experince period */ }}
+      {{ /* Number of coffee cups drank */ }}
       <c-stat v-if="numberOfCoffeeCupsDrank > 0">
         <c-stat-number>
           {{ numberOfCoffeeCupsDrank }}
         </c-stat-number>
         <c-stat-label>
           <span v-if="numberOfCoffeeCupsDrank === 1">
-            {{ doc.stats.stats.part3.singular }}
+            {{ doc.stats.part3.singular }}
           </span>
           <span v-if="numberOfCoffeeCupsDrank > 1">
-            {{ doc.stats.stats.part3.plural }}
+            {{ doc.stats.part3.plural }}
           </span>
         </c-stat-label>
       </c-stat>
@@ -103,17 +104,24 @@
       <c-collapse :is-open="isVisible.numberOfCoffeeCupsDrank">
         <nuxt-content :document="codeBlockNumberOfCoffeeCupsDrank" />
       </c-collapse>
-      {{ /* / Stats - number of coffee cups drank */ }}
-      {{ /* My main skills */ }}
+      {{ /* / Number of coffee cups drank */ }}
+    </c-box>
+    {{ /* / Stats */ }}
+
+    {{ /* My main skills */ }}
+    <c-box width="100%" padding="10">
       <c-heading as="h2" margin-top="10">My main skills</c-heading>
       <c-list style-type="disc" margin-top="5">
         {{ /* Fix key */ }}
         <!-- <c-list-item v-for="item in document['my-main-skills']" :key="item.key"> -->
-          <!-- {{ item.skill[0].text }} -->
+        <!-- {{ item.skill[0].text }} -->
         <!-- </c-list-item> -->
       </c-list>
-      {{ /* / My main skills */ }}
-      {{ /* My skills output */ }}
+    </c-box>
+    {{ /* / My main skills */ }}
+
+    {{ /* My skills output */ }}
+    <c-box width="100%" padding="10">
       <c-heading as="h2" margin-top="10">
         My skills to produce visual output
       </c-heading>
@@ -140,7 +148,7 @@
       <br />
       <hr />
       <br />
-      <pre>{{ document }}</pre>
+      <pre>{{ doc }}</pre>
     </c-box>
   </div>
 </template>
@@ -158,7 +166,7 @@ import {
   CLink,
   CIcon,
   CList,
-  CListItem
+  // CListItem
 } from '@chakra-ui/vue'
 
 export default {
@@ -176,24 +184,19 @@ export default {
     CLink,
     CIcon,
     CList,
-    CListItem
-  },
-  head() {
-    return {
-      script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
-    };
+    // CListItem
   },
   async asyncData ({ $content }) {
-    const docHeader = await $content("header").fetch();
-    const docStats = await $content("statistics").fetch();
+    const docHeader = await $content('header').fetch();
+    const docStats = await $content('statistics').fetch();
 
     const codeBlockExperiencePeriod = await $content('code-blocks/experience-period').fetch();
     const codeBlockNumberOfCoffeeCupsDrank = await $content('code-blocks/number-of-coffee-cups-drank').fetch();
 
     return {
       doc: {
-        header: docHeader[0],
-        stats: docStats[0],
+        header: docHeader,
+        stats: docStats,
       },
       codeBlockExperiencePeriod,
       codeBlockNumberOfCoffeeCupsDrank,
@@ -260,6 +263,11 @@ export default {
 
       return `${numberOfYears}${suffixSign}`;
     },
+  },
+  head() {
+    return {
+      script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
+    };
   },
 }
 </script>
