@@ -7,6 +7,10 @@
   "intro": {
     "heading-part-1": "Hi,<br />my name is Žiga and I'm a <strong>Lead engineer</strong>,<br />",
     "heading-part-2": "mostly focused on front-end web development.",
-    "additional-text": "I have been working in the web industry almost a decade and a half. My current spot is at company <c-link href=\"https://www.endava.com/\" is-external>Endava <c-icon name=\"external-link-alt\" margin-left=\"2px\" /></c-link>."
+    "additional-text": "I have been working in the web industry almost a decade and a half. My current spot is at company <c-link href=\"https://www.endava.com/\" is-external>Endava <c-icon name=\"external-link-alt\" margin-left=\"2px\" /></c-link>.",
+    "heading": {
+      "part-1": "Hi,<br />my name is Žiga and I'm a <strong>Lead engineer</strong>,",
+      "part-2": "mostly focused on front-end web development."
+    }
   }
 }
