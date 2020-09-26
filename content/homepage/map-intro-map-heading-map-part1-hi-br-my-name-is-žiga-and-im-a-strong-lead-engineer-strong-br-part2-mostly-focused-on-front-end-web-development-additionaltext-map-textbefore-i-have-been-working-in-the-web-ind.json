@@ -14,8 +14,11 @@
     }
   },
   "stats": {
-    "stat1": "l1",
-    "stat2": "l2",
-    "stat3": "l3"
+    "stat1": "years in the web industry",
+    "stat2": "years of active programming",
+    "stat3": {
+      "singular": "cup of coffee drank today",
+      "plural": "cups of coffee drank today"
+    }
   }
 }
