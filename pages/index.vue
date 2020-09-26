@@ -9,12 +9,22 @@
     {{ /* Header */ }}
     <c-box background-color="black" width="100%" padding="10" color="white">
       <c-heading as="h1">
-        <span v-html="document.intro['heading-part-1']"></span>
-        <c-text as="span" font-size="lg" v-html="document.intro['heading-part-2']" />
+        <span v-html="document.intro.heading.part1"></span>
       </c-heading>
-      <c-text margin-top="10" />
-
-      I have been working in the web industry almost a decade and a half. My current spot is at company <c-link href="https://www.endava.com/" is-external>Endava <c-icon name="external-link-alt" margin-left="2px" /></c-link>.
+      <c-text
+        as="p"
+        font-size="24px"
+        margin-top="2"
+        v-html="document.intro.heading.part2"
+      />
+      <c-text as="p" margin-top="10">
+        <span v-html="document.intro.additionalText.textBefore" />
+        <c-link :href="document.intro.additionalText.link.href" is-external>
+          {{ document.intro.additionalText.link.text }}
+          <c-icon name="external-link-alt" margin-left="2px" />
+        </c-link>
+        <span v-html="document.intro.additionalText.textAfter" />
+      </c-text>
       <c-box padding-top="5">
         <c-button
           size="xs"

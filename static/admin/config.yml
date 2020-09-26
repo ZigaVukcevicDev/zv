@@ -36,20 +36,29 @@ collections:
           name: "heading"
           widget: "object"
           fields:
-            - { label: "Part 1", name: "part-1", widget: "string", required: true }
-            - { label: "Part 2", name: "part-2", widget: "string", required: true }
+            - { label: "Part 1", name: "part1", widget: "string", required: true }
+            - { label: "Part 2", name: "part2", widget: "string", required: true }
         - label: "Additional text"
-          name: "additional-text"
+          name: "additionalText"
           widget: "object"
           fields:
-            - { label: "Text before", name: "text-before", widget: "string", required: true }
-            - { label: "Link text", name: "link-text", widget: "string", required: true }
-            - { label: "Link href", name: "link-href", widget: "string", required: true }
-            - { label: "Text after", name: "text-after", widget: "string", required: true }
-      - label: "Stats"
+            - { label: "Text before", name: "textBefore", widget: "string", required: true }
+            - label: "Link"
+              name: "link"
+              widget: "object"
+              fields:
+                - { label: "Text", name: "text", widget: "string", required: true }
+                - { label: "Url", name: "href", widget: "string", required: true }
+            - { label: "Text after", name: "textAfter", widget: "string", required: true }
+      - label: "Statistics"
         name: "stats"
         widget: "object"
         fields:
-          - { label: "Label 1", name: "stat-1", widget: "string", required: true }
-          - { label: "Label 2", name: "stat-2", widget: "string", required: true }
-          - { label: "Label 3", name: "stat-3", widget: "string", required: true }
+          - { label: "Text 1", name: "stat1", widget: "string", required: true }
+          - { label: "Text 2", name: "stat2", widget: "string", required: true }
+          - label: "Text 3"
+            name: "stat3"
+            widget: "object"
+            fields:
+              - { label: "Singular", name: "singular", widget: "string", required: true }
+              - { label: "Plural", name: "plural", widget: "string", required: true }
