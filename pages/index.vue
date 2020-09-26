@@ -12,7 +12,9 @@
         <span v-html="document.intro['heading-part-1']"></span>
         <c-text as="span" font-size="lg" v-html="document.intro['heading-part-2']" />
       </c-heading>
-      <c-text margin-top="10" v-html="document.intro['additional-text']" />
+      <c-text margin-top="10" />
+
+      I have been working in the web industry almost a decade and a half. My current spot is at company <c-link href="https://www.endava.com/" is-external>Endava <c-icon name="external-link-alt" margin-left="2px" /></c-link>.
       <c-box padding-top="5">
         <c-button
           size="xs"

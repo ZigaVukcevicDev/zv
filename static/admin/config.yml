@@ -32,9 +32,20 @@ collections:
         name: "intro"
         widget: "object"
         fields:
-          - { label: "Heading part 1", name: "heading-part-1", widget: "string", required: true }
-          - { label: "Heading part 2", name: "heading-part-2", widget: "string", required: true }
-          - { label: "Additional text", name: "additional-text", widget: "markdown", required: true }
+        - label: "Heading"
+          name: "heading"
+          widget: "object"
+          fields:
+            - { label: "Part 1", name: "part-1", widget: "string", required: true }
+            - { label: "Part 2", name: "part-2", widget: "string", required: true }
+        - label: "Additional text"
+          name: "additional-text"
+          widget: "object"
+          fields:
+            - { label: "Text before", name: "text-before", widget: "string", required: true }
+            - { label: "Link text", name: "link-text", widget: "string", required: true }
+            - { label: "Link href", name: "link-href", widget: "string", required: true }
+            - { label: "Text after", name: "text-after", widget: "string", required: true }
       - label: "Stats"
         name: "stats"
         widget: "object"
