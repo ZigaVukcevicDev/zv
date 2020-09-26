@@ -1,20 +1,3 @@
-<br />
-<p>Template</p>
-
-```html
-<c-stat v-if="numberOfCoffeeCupsDrank > 0">
-  <c-stat-number>
-    {{ numberOfCoffeeCupsDrank }}
-  </c-stat-number>
-  <c-stat-label>
-    cup<span v-if="numberOfCoffeeCupsDrank > 1">s</span>
-    of coffee drank today
-  </c-stat-label>
-</c-stat>
-```
-
-<p>Script</p>
-
 ```js
 computed: {
   numberOfCoffeeCupsDrank () {

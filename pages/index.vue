@@ -72,9 +72,24 @@
         <span v-if="isVisible.experiencePeriod">Hide code</span>
         <span v-if="!isVisible.experiencePeriod">Show code</span>
       </c-button>
-      <c-collapse :is-open="isVisible.experiencePeriod">
-        <nuxt-content :document="codeBlockExperiencePeriod" />
-      </c-collapse>
+      <c-tabs
+        v-show="isVisible.experiencePeriod"
+        variant="enclosed-colored"
+        align="end"
+      >
+        <c-tab-list>
+          <c-tab>Template</c-tab>
+          <c-tab>Script</c-tab>
+        </c-tab-list>
+        <c-tab-panels>
+          <c-tab-panel>
+            <nuxt-content :document="codeBlockExperiencePeriodTemplate" />
+          </c-tab-panel>
+          <c-tab-panel>
+            <nuxt-content :document="codeBlockExperiencePeriodScript" />
+          </c-tab-panel>
+        </c-tab-panels>
+      </c-tabs>
       {{ /* / Experince period */ }}
       {{ /* Number of coffee cups drank */ }}
       <c-stat v-if="numberOfCoffeeCupsDrank > 0">
@@ -101,9 +116,26 @@
         <span v-if="isVisible.numberOfCoffeeCupsDrank">Hide code</span>
         <span v-if="!isVisible.numberOfCoffeeCupsDrank">Show code</span>
       </c-button>
-      <c-collapse :is-open="isVisible.numberOfCoffeeCupsDrank">
-        <nuxt-content :document="codeBlockNumberOfCoffeeCupsDrank" />
-      </c-collapse>
+      <c-tabs
+        v-show="isVisible.numberOfCoffeeCupsDrank"
+        variant="enclosed-colored"
+        align="end"
+      >
+        <c-tab-list>
+          <c-tab>Template</c-tab>
+          <c-tab>Script</c-tab>
+        </c-tab-list>
+        <c-tab-panels>
+          <c-tab-panel>
+            <nuxt-content
+              :document="codeBlockNumberOfCoffeeCupsDrankTemplate"
+            />
+          </c-tab-panel>
+          <c-tab-panel>
+            <nuxt-content :document="codeBlockNumberOfCoffeeCupsDrankScript" />
+          </c-tab-panel>
+        </c-tab-panels>
+      </c-tabs>
       {{ /* / Number of coffee cups drank */ }}
     </c-box>
     {{ /* / Stats */ }}
@@ -159,12 +191,16 @@ import {
   CStat,
   CStatNumber,
   CStatLabel,
-  CCollapse,
   CButton,
   CBox,
   CText,
   CLink,
   CIcon,
+  CTabs,
+  CTabList,
+  CTabPanels,
+  CTab,
+  CTabPanel,
   CList,
   // CListItem
 } from '@chakra-ui/vue'
@@ -177,12 +213,16 @@ export default {
     CStat,
     CStatNumber,
     CStatLabel,
-    CCollapse,
     CButton,
     CBox,
     CText,
     CLink,
     CIcon,
+    CTabs,
+    CTabList,
+    CTabPanels,
+    CTab,
+    CTabPanel,
     CList,
     // CListItem
   },
@@ -190,16 +230,20 @@ export default {
     const docHeader = await $content('header').fetch();
     const docStats = await $content('statistics').fetch();
 
-    const codeBlockExperiencePeriod = await $content('code-blocks/experience-period').fetch();
-    const codeBlockNumberOfCoffeeCupsDrank = await $content('code-blocks/number-of-coffee-cups-drank').fetch();
+    const codeBlockExperiencePeriodTemplate = await $content('code-blocks/experience-period-template').fetch();
+    const codeBlockExperiencePeriodScript = await $content('code-blocks/experience-period-script').fetch();
+    const codeBlockNumberOfCoffeeCupsDrankTemplate = await $content('code-blocks/number-of-coffee-cups-drank-template').fetch();
+    const codeBlockNumberOfCoffeeCupsDrankScript = await $content('code-blocks/number-of-coffee-cups-drank-script').fetch();
 
     return {
       doc: {
         header: docHeader,
         stats: docStats,
       },
-      codeBlockExperiencePeriod,
-      codeBlockNumberOfCoffeeCupsDrank,
+      codeBlockExperiencePeriodTemplate,
+      codeBlockExperiencePeriodScript,
+      codeBlockNumberOfCoffeeCupsDrankTemplate,
+      codeBlockNumberOfCoffeeCupsDrankScript,
     }
   },
   data () {
