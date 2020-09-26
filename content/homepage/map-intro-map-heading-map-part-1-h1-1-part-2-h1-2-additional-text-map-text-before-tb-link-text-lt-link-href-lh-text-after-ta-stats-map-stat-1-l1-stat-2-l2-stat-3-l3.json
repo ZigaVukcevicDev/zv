@@ -1,0 +1,19 @@
+{
+  "intro": {
+    "heading": {
+      "part-1": "h1-1",
+      "part-2": "h1-2"
+    },
+    "additional-text": {
+      "text-before": "tb",
+      "link-text": "lt",
+      "link-href": "lh",
+      "text-after": "ta"
+    }
+  },
+  "stats": {
+    "stat-1": "l1",
+    "stat-2": "l2",
+    "stat-3": "l3"
+  }
+}
