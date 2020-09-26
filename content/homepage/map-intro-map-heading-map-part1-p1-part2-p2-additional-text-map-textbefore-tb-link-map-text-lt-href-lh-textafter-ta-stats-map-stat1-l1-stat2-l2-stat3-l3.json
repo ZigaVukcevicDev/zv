@@ -1,16 +1,16 @@
 {
   "intro": {
     "heading": {
-      "part1": "p1",
-      "part2": "p2"
+      "part1": "Hi,<br />my name is Žiga and I'm a <strong>Lead engineer</strong>,",
+      "part2": "mostly focused on front-end web development."
     },
     "additional-text": {
-      "textBefore": "tb",
+      "textBefore": "I have been working in the web industry almost a decade and a half. My current spot is at company",
       "link": {
-        "text": "lt",
-        "href": "lh"
+        "text": "Endava",
+        "href": "https://www.endava.com/"
       },
-      "textAfter": "ta"
+      "textAfter": "."
     }
   },
   "stats": {
