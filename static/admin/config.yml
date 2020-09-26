@@ -28,6 +28,13 @@ collections:
     editor:
       preview: false
     fields:
+      - label: "Introduction"
+        name: "intro"
+        widget: "object"
+        fields:
+          - { label: "Heading part 1", name: "heading-part-1", widget: "string", required: true }
+          - { label: "Heading part 2", name: "heading-part-2", widget: "string", required: true }
+          - { label: "Additional text", name: "additional-text", widget: "markdown", required: true }
       - label: "Stats"
         name: "stats"
         widget: "object"
