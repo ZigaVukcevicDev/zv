@@ -9,21 +9,21 @@
     {{ /* Header */ }}
     <c-box background-color="black" width="100%" padding="10" color="white">
       <c-heading as="h1">
-        <span v-html="document.intro.heading.part1"></span>
+        <span v-html="doc.header.intro.heading.part1"></span>
       </c-heading>
       <c-text
         as="p"
         font-size="24px"
         margin-top="2"
-        v-html="document.intro.heading.part2"
+        v-html="doc.header.intro.heading.part2"
       />
       <c-text as="p" margin-top="10">
-        <span v-html="document.intro.additionalText.textBefore" />
-        <c-link :href="document.intro.additionalText.link.href" is-external>
-          {{ document.intro.additionalText.link.text }}
+        <span v-html="doc.header.intro.additionalText.textBefore" />
+        <c-link :href="doc.header.intro.additionalText.link.href" is-external>
+          {{ doc.header.intro.additionalText.link.text }}
           <c-icon name="external-link-alt" margin-left="2px" />
         </c-link>
-        <span v-html="document.intro.additionalText.textAfter" />
+        <span v-html="doc.header.intro.additionalText.textAfter" />
       </c-text>
       <c-box padding-top="5">
         <c-button
@@ -53,13 +53,13 @@
           {{ calculateExperiencePeriod('2007-06-01') }}
         </c-stat-number>
         <c-stat-label>
-          {{ document.stats['stat-1'] }}
+          {{ doc.stats.stats.part1 }}
         </c-stat-label>
         <c-stat-number>
           {{ calculateExperiencePeriod('2012-01-01') }}
         </c-stat-number>
         <c-stat-label>
-          <!-- {{ document['stats-programming'][0].text }} -->
+          {{ doc.stats.stats.part2 }}
         </c-stat-label>
       </c-stat>
       <c-button
@@ -81,8 +81,12 @@
           {{ numberOfCoffeeCupsDrank }}
         </c-stat-number>
         <c-stat-label>
-          cup<span v-if="numberOfCoffeeCupsDrank > 1">s</span>
-          of coffee drank today
+          <span v-if="numberOfCoffeeCupsDrank === 1">
+            {{ doc.stats.stats.part3.singular }}
+          </span>
+          <span v-if="numberOfCoffeeCupsDrank > 1">
+            {{ doc.stats.stats.part3.plural }}
+          </span>
         </c-stat-label>
       </c-stat>
       <c-button
@@ -180,12 +184,19 @@ export default {
     };
   },
   async asyncData ({ $content }) {
-    const document = await $content("homepage").fetch();
+    const doc = {
+      header: await $content("header").fetch(),
+      stats: await $content("statistics").fetch(),
+    };
+
     const codeBlockExperiencePeriod = await $content('code-blocks/experience-period').fetch();
     const codeBlockNumberOfCoffeeCupsDrank = await $content('code-blocks/number-of-coffee-cups-drank').fetch();
 
     return {
-      document: document[0],
+      doc: {
+        header: doc.header[0],
+        stats: doc.stats[0],
+      },
       codeBlockExperiencePeriod,
       codeBlockNumberOfCoffeeCupsDrank,
     }
