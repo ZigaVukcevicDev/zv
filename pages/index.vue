@@ -9,19 +9,10 @@
     {{ /* Header */ }}
     <c-box background-color="black" width="100%" padding="10" color="white">
       <c-heading as="h1">
-        Hi,<br />my name is Žiga and I'm a <strong>Lead engineer</strong>,<br />
-        <c-text as="span" font-size="lg">
-          mostly focused on front-end web development.
-        </c-text>
+        <span v-html="document.intro['heading-part-1']"></span>
+        <c-text as="span" font-size="lg" v-html="document.intro['heading-part-2']" />
       </c-heading>
-      <c-text margin-top="10">
-        I have been working in the web industry almost a decade and a half. My
-        current spot is at company
-        <c-link href="https://www.endava.com/" is-external>
-          Endava <c-icon name="external-link-alt" margin-left="2px" />
-        </c-link>
-        .
-      </c-text>
+      <c-text margin-top="10" v-html="document.intro['additional-text']" />
       <c-box padding-top="5">
         <c-button
           size="xs"
@@ -50,7 +41,7 @@
           {{ calculateExperiencePeriod('2007-06-01') }}
         </c-stat-number>
         <c-stat-label>
-          {{ document[0].stats['stat-1'] }}
+          {{ document.stats['stat-1'] }}
         </c-stat-label>
         <c-stat-number>
           {{ calculateExperiencePeriod('2012-01-01') }}
@@ -182,7 +173,7 @@ export default {
     const codeBlockNumberOfCoffeeCupsDrank = await $content('code-blocks/number-of-coffee-cups-drank').fetch();
 
     return {
-      document,
+      document: document[0],
       codeBlockExperiencePeriod,
       codeBlockNumberOfCoffeeCupsDrank,
     }
