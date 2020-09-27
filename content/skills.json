@@ -1,8 +1,7 @@
 {
   "main": {
     "list": "- understanding of developing for the web and a **careful eye for design**,\n- the ability to **translate designs** into semantic, accessible front-end code,\n- understanding of **modern web technologies and workflows**,\n- fully aware of **mobile and responsive design** and development practices,\n- capable of **designing in a browser**,\n- understanding of **integration or modification of front-end code** with CMSs,\n- knowing of **SEO**,\n- understanding and **appreciation of color and typography**,\n- the ability to work directly with UX/UI and designers to implement designs and provide feedback on a design if needed,\n- excellent **communication skills** and\n- the ability to dive in and **learn new things** to find solutions for technical problems.",
-    "heading": "My main skills",
-    "body": "* [test](test) 1\n\n  * test 1a\n  * test 1b\n* test 2"
+    "heading": "My main skills 123"
   },
   "visualOutput": {
     "list": "- TODO",
