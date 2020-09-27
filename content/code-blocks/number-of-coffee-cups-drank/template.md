@@ -7,7 +7,7 @@
     <span v-if="numberOfCoffeeCupsDrank === 1">
       {{ doc.stats.part3.singular }}
     </span>
-    <span v-if="numberOfCoffeeCupsDrank > 1">
+    <span v-else-if="numberOfCoffeeCupsDrank > 1">
       {{ doc.stats.part3.plural }}
     </span>
   </c-stat-label>

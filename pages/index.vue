@@ -80,13 +80,28 @@
         <c-tab-list>
           <c-tab>Template</c-tab>
           <c-tab>Script</c-tab>
+          <c-tab>CMS integration</c-tab>
         </c-tab-list>
         <c-tab-panels>
           <c-tab-panel>
-            <nuxt-content :document="codeBlockExperiencePeriodTemplate" />
+            <nuxt-content :document="codeBlocks.experiencePeriod.template" />
           </c-tab-panel>
           <c-tab-panel>
-            <nuxt-content :document="codeBlockExperiencePeriodScript" />
+            <nuxt-content :document="codeBlocks.experiencePeriod.script" />
+          </c-tab-panel>
+          <c-tab-panel>
+            <c-text as="p" margin-top="5" margin-bottom="5">
+              Input fields in CMS
+            </c-text>
+            <c-image
+              :src="require('@/assets/images/cms/experience-period.png')"
+              alt="CMS"
+              w="800px"
+            />
+            <c-text as="p" margin-top="5" margin-bottom="5">
+              Configuration
+            </c-text>
+            <nuxt-content :document="codeBlocks.experiencePeriod.cms" />
           </c-tab-panel>
         </c-tab-panels>
       </c-tabs>
@@ -100,7 +115,7 @@
           <span v-if="numberOfCoffeeCupsDrank === 1">
             {{ doc.stats.part3.singular }}
           </span>
-          <span v-if="numberOfCoffeeCupsDrank > 1">
+          <span v-else-if="numberOfCoffeeCupsDrank > 1">
             {{ doc.stats.part3.plural }}
           </span>
         </c-stat-label>
@@ -124,15 +139,34 @@
         <c-tab-list>
           <c-tab>Template</c-tab>
           <c-tab>Script</c-tab>
+          <c-tab>CMS integration</c-tab>
         </c-tab-list>
         <c-tab-panels>
           <c-tab-panel>
             <nuxt-content
-              :document="codeBlockNumberOfCoffeeCupsDrankTemplate"
+              :document="codeBlocks.numberOfCoffeeCupsDrank.template"
             />
           </c-tab-panel>
           <c-tab-panel>
-            <nuxt-content :document="codeBlockNumberOfCoffeeCupsDrankScript" />
+            <nuxt-content
+              :document="codeBlocks.numberOfCoffeeCupsDrank.script"
+            />
+          </c-tab-panel>
+          <c-tab-panel>
+            <c-text as="p" margin-top="5" margin-bottom="5">
+              Input fields in CMS
+            </c-text>
+            <c-image
+              :src="
+                require('@/assets/images/cms/number-of-coffee-cups-drank.png')
+              "
+              alt="CMS"
+              w="800px"
+            />
+            <c-text as="p" margin-top="5" margin-bottom="5">
+              Configuration
+            </c-text>
+            <nuxt-content :document="codeBlocks.numberOfCoffeeCupsDrank.cms" />
           </c-tab-panel>
         </c-tab-panels>
       </c-tabs>
@@ -190,6 +224,7 @@ import {
   CTabPanels,
   CTab,
   CTabPanel,
+  CImage,
 } from '@chakra-ui/vue'
 
 export default {
@@ -210,6 +245,7 @@ export default {
     CTabPanels,
     CTab,
     CTabPanel,
+    CImage,
   },
   async asyncData ({ $content }) {
     const doc = {
@@ -218,17 +254,22 @@ export default {
       skills: await $content('skills').fetch(),
     }
 
-    const codeBlockExperiencePeriodTemplate = await $content('code-blocks/experience-period-template').fetch();
-    const codeBlockExperiencePeriodScript = await $content('code-blocks/experience-period-script').fetch();
-    const codeBlockNumberOfCoffeeCupsDrankTemplate = await $content('code-blocks/number-of-coffee-cups-drank-template').fetch();
-    const codeBlockNumberOfCoffeeCupsDrankScript = await $content('code-blocks/number-of-coffee-cups-drank-script').fetch();
+    const codeBlocks = {
+      experiencePeriod: {
+        template: await $content('code-blocks/experience-period/template').fetch(),
+        script: await $content('code-blocks/experience-period/script').fetch(),
+        cms: await $content('code-blocks/experience-period/cms-integration').fetch(),
+      },
+      numberOfCoffeeCupsDrank: {
+        template: await $content('code-blocks/number-of-coffee-cups-drank/template').fetch(),
+        script: await $content('code-blocks/number-of-coffee-cups-drank/script').fetch(),
+        cms: await $content('code-blocks/number-of-coffee-cups-drank/cms-integration').fetch(),
+      }
+    }
 
     return {
       doc,
-      codeBlockExperiencePeriodTemplate,
-      codeBlockExperiencePeriodScript,
-      codeBlockNumberOfCoffeeCupsDrankTemplate,
-      codeBlockNumberOfCoffeeCupsDrankScript,
+      codeBlocks,
     }
   },
   data () {
