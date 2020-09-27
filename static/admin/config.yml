@@ -52,3 +52,26 @@ collections:
             fields:
               - { label: "Singular", name: "singular", widget: "string", required: true }
               - { label: "Plural", name: "plural", widget: "string", required: true }
+      - name: 'skills'
+        label: 'Skills'
+        format: 'json'
+        file: 'content/skills.json'
+        fields:
+          - label: "Main"
+            name: "main"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: true }
+              - { label: "List", name: "list", widget: "markdown", buttons: ["bold", "link", "bulleted-list"], editor_components: [], mode: "rich_text", minimal: true, required: true }
+          - label: "Visual output"
+            name: "visualOutput"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: true }
+              - { label: "List", name: "list", widget: "markdown", buttons: ["bold", "link", "bulleted-list"], editor_components: [], mode: "rich_text", minimal: true, required: true }
+          - label: "Programming logic"
+            name: "programmingLogic"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: true }
+              - { label: "List", name: "list", widget: "markdown", buttons: ["bold", "link", "bulleted-list"], editor_components: [], mode: "rich_text", minimal: true, required: true }

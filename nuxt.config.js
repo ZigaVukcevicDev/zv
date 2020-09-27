@@ -39,7 +39,21 @@ export default {
     // https://go.nuxtjs.dev/emotion
     '@nuxtjs/emotion',
     '@nuxt/content',
+    '@nuxtjs/markdownit',
   ],
+
+  // [optional] markdownit options
+  // See https://github.com/markdown-it/markdown-it
+  markdownit: {
+    injected: true,
+    // preset: 'default',
+    // linkify: true,
+    // breaks: true,
+    // use: [
+    //   'markdown-it-div',
+    //   'markdown-it-attrs'
+    // ]
+  },
 
   // Chakra settings
   chakra: {

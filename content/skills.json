@@ -1,9 +1,7 @@
 {
   "main": {
-    "heading": "My main skills",
-    "content": "- test 1\n  - test 1a\n  - test 1b\n- test 2 ",
     "list": "- test 1\n  - test 1a\n  - test 1b\n- test 2 ",
-    "body": "* [test](test) 1\n\n  * test 1a\n  * test 1b\n* test 2"
+    "heading": "My main skills"
   },
   "visualOutput": {
     "list": "* test 1 vo\n  * test 1a\n  * test 1b\n* test 2",

@@ -141,47 +141,36 @@
     {{ /* / Stats */ }}
 
     {{ /* My main skills */ }}
-    <c-box width="100%" padding="10">
-      <c-heading as="h2" margin-top="10">My main skills</c-heading>
-      <c-list style-type="disc" margin-top="5">
-        {{ /* Fix key */ }}
-        <!-- <c-list-item v-for="item in document['my-main-skills']" :key="item.key"> -->
-        <!-- {{ item.skill[0].text }} -->
-        <!-- </c-list-item> -->
-      </c-list>
+    <c-box width="100%" padding-top="5" padding-left="10">
+      <c-heading as="h2" margin-bottom="5">
+        {{ doc.skills.main.heading }}
+      </c-heading>
+      <div v-html="$md.render(doc.skills.main.list)" />
     </c-box>
     {{ /* / My main skills */ }}
 
-    {{ /* My skills output */ }}
-    <c-box width="100%" padding="10">
-      <c-heading as="h2" margin-top="10">
-        My skills to produce visual output
+    {{ /* My visual output skills */ }}
+    <c-box width="100%" padding-top="5" padding-left="10">
+      <c-heading as="h2" margin-bottom="5">
+        {{ doc.skills.visualOutput.heading }}
       </c-heading>
-      <!-- <c-list style-type="disc" margin-top="5">
-        {{ /* Fix key */ }}
-        <c-list-item v-for="item in composeListOfSkills" :key="item.key">
-          {{ item.text }}
-          <c-list
-            v-if="item.children.length > 0"
-            style-type="disc"
-            margin-left="5"
-          >
-            <c-list-item
-              v-for="itemChild in item.children"
-              :key="itemChild.key"
-            >
-              {{ itemChild }}
-            </c-list-item>
-          </c-list>
-        </c-list-item>
-      </c-list> -->
-      {{ /* / My skills output */ }}
-
-      <br />
-      <hr />
-      <br />
-      <pre>{{ doc }}</pre>
+      <div v-html="$md.render(doc.skills.visualOutput.list)" />
     </c-box>
+    {{ /* / My visual output skills */ }}
+
+    {{ /* My programming logic skills */ }}
+    <c-box width="100%" padding-top="5" padding-left="10">
+      <c-heading as="h2" margin-bottom="5">
+        {{ doc.skills.programmingLogic.heading }}
+      </c-heading>
+      <div v-html="$md.render(doc.skills.programmingLogic.list)" />
+    </c-box>
+    {{ /* / My programming logic skills */ }}
+
+    <br />
+    <hr />
+    <br />
+    <pre>{{ doc }}</pre>
   </div>
 </template>
 
@@ -201,8 +190,6 @@ import {
   CTabPanels,
   CTab,
   CTabPanel,
-  CList,
-  // CListItem
 } from '@chakra-ui/vue'
 
 export default {
@@ -223,12 +210,13 @@ export default {
     CTabPanels,
     CTab,
     CTabPanel,
-    CList,
-    // CListItem
   },
   async asyncData ({ $content }) {
-    const docHeader = await $content('header').fetch();
-    const docStats = await $content('statistics').fetch();
+    const doc = {
+      header: await $content('header').fetch(),
+      stats: await $content('statistics').fetch(),
+      skills: await $content('skills').fetch(),
+    }
 
     const codeBlockExperiencePeriodTemplate = await $content('code-blocks/experience-period-template').fetch();
     const codeBlockExperiencePeriodScript = await $content('code-blocks/experience-period-script').fetch();
@@ -236,10 +224,7 @@ export default {
     const codeBlockNumberOfCoffeeCupsDrankScript = await $content('code-blocks/number-of-coffee-cups-drank-script').fetch();
 
     return {
-      doc: {
-        header: docHeader,
-        stats: docStats,
-      },
+      doc,
       codeBlockExperiencePeriodTemplate,
       codeBlockExperiencePeriodScript,
       codeBlockNumberOfCoffeeCupsDrankTemplate,
