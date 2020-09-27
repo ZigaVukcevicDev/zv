@@ -1,6 +1,7 @@
 {
   "main": {
     "heading": "My main skills",
-    "content": "- test 1\n  - test 1a\n  - test 1b\n- test 2 "
+    "content": "- test 1\n  - test 1a\n  - test 1b\n- test 2 ",
+    "list": "- test 1\n  - test 1a\n  - test 1b\n- test 2 "
   }
 }
