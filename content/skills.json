@@ -4,5 +4,13 @@
     "content": "- test 1\n  - test 1a\n  - test 1b\n- test 2 ",
     "list": "- test 1\n  - test 1a\n  - test 1b\n- test 2 ",
     "body": "* [test](test) 1\n\n  * test 1a\n  * test 1b\n* test 2"
+  },
+  "visualOutput": {
+    "list": "* test 1 vo\n  * test 1a\n  * test 1b\n* test 2",
+    "heading": "My skills to produce visual output"
+  },
+  "programmingLogic": {
+    "list": "* test 1 pl\n  * test 1a\n  * test 1b\n* test 2",
+    "heading": "My skills to work with programming logic"
   }
 }
