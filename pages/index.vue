@@ -213,6 +213,38 @@
     </c-box>
     {{ /* / My programming logic skills */ }}
 
+    {{ /* Education */ }}
+    <c-box
+      v-show="doc.education.isVisible"
+      width="100%"
+      padding-top="10"
+      padding-left="10"
+    >
+      <c-heading as="h2" margin-bottom="5">
+        {{ doc.education.heading }}
+      </c-heading>
+      <c-box width="75%" v-html="$md.render(doc.education.richText)" />
+    </c-box>
+    {{ /* / Education */ }}
+
+    {{ /* Certificates and conferences */ }}
+    <c-box
+      v-show="doc.certificatesAndConferences.isVisible"
+      width="100%"
+      padding-top="10"
+      padding-left="10"
+    >
+      <c-heading as="h2" margin-bottom="5">
+        {{ doc.certificatesAndConferences.heading }}
+      </c-heading>
+      <c-box
+        width="75%"
+        margin-left="5"
+        v-html="$md.render(doc.certificatesAndConferences.list)"
+      />
+    </c-box>
+    {{ /* / Certificates and conferences */ }}
+
     <br />
     <hr />
     <br />
@@ -264,6 +296,8 @@ export default {
       header: await $content('header').fetch(),
       stats: await $content('statistics').fetch(),
       skills: await $content('skills').fetch(),
+      education: await $content('education').fetch(),
+      certificatesAndConferences: await $content('certificates-and-conferences').fetch(),
     }
 
     const codeBlocks = {

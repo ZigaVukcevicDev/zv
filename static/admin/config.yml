@@ -75,3 +75,19 @@ collections:
             fields:
               - { label: "Heading", name: "heading", widget: "string", required: true }
               - { label: "List", name: "list", widget: "markdown", buttons: ["bold", "link", "bulleted-list"], editor_components: [], mode: "rich_text", minimal: true, required: true }
+      - name: 'education'
+        label: 'Education'
+        format: 'json'
+        file: 'content/education.json'
+        fields:
+          - { label: "Show on page", name: "isVisible", widget: "boolean" }
+          - { label: "Heading", name: "heading", widget: "string", required: true }
+          - { label: "Text", name: "richText", widget: "markdown", buttons: ["bold", "link"], editor_components: [], mode: "rich_text", minimal: true, required: true }
+      - name: 'certificatesAndConferences'
+        label: 'Certificates and conferences'
+        format: 'json'
+        file: 'content/certificates-and-conferences.json'
+        fields:
+          - { label: "Show on page", name: "isVisible", widget: "boolean" }
+          - { label: "Heading", name: "heading", widget: "string", required: true }
+          - { label: "List", name: "list", widget: "markdown", buttons: ["heading-three", "bold", "link", "bulleted-list"], editor_components: [], mode: "rich_text", minimal: true, required: true }
