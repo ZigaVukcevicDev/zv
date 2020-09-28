@@ -6,8 +6,52 @@
     </c-box>
     {{ /* / Draft notice */ }}
 
+    {{ /* Menu */ }}
+    <c-box
+      display="flex"
+      background-color="black"
+      width="100%"
+      padding-top="10"
+      padding-right="10"
+      justify-content="flex-end"
+    >
+      <c-menu>
+        <c-menu-button right-icon="chevron-down" variant-color="black">
+          Menu
+        </c-menu-button>
+        <c-menu-list min-width="180px">
+          <c-menu-group title="Skills">
+            <c-menu-item padding-left="10">Main</c-menu-item>
+            <c-menu-item padding-left="10">Produce visual output</c-menu-item>
+            <c-menu-item padding-left="10"
+              >Work with programming logic</c-menu-item
+            >
+          </c-menu-group>
+          <c-menu-divider />
+          <c-menu-group title="Projects">
+            <c-menu-item padding-left="10">Project 1</c-menu-item>
+            <c-menu-item padding-left="10">Project 2</c-menu-item>
+            <c-menu-item padding-left="10">Project 3</c-menu-item>
+          </c-menu-group>
+          <c-menu-divider />
+          <c-menu-group>
+            <c-menu-item>Education</c-menu-item>
+            <c-menu-item>Certificates and conferences</c-menu-item>
+          </c-menu-group>
+        </c-menu-list>
+      </c-menu>
+    </c-box>
+    {{ /* / Menu */ }}
+
     {{ /* Header */ }}
-    <c-box background-color="black" width="100%" padding="10" color="white">
+    <c-box
+      background-color="black"
+      width="100%"
+      padding-left="10"
+      padding-bottom="10"
+      padding-right="10"
+      color="white"
+    >
       <c-heading as="h1">
         <span v-html="doc.header.intro.heading.part1"></span>
       </c-heading>
@@ -279,6 +323,12 @@ import {
   CTab,
   CTabPanel,
   CImage,
+  CMenu,
+  CMenuButton,
+  CMenuList,
+  CMenuItem,
+  CMenuGroup,
+  CMenuDivider,
 } from '@chakra-ui/vue'
 
 export default {
@@ -300,6 +350,12 @@ export default {
     CTab,
     CTabPanel,
     CImage,
+    CMenu,
+    CMenuButton,
+    CMenuList,
+    CMenuItem,
+    CMenuGroup,
+    CMenuDivider,
   },
   async asyncData ({ $content }) {
     const doc = {
