@@ -8,7 +8,7 @@
     "heading": "My skills to produce visual output"
   },
   "programmingLogic": {
-    "list": "- TODO",
+    "list": "- **object-oriented programming**,\n- architectural pattern **MVC**, writing **modular code**,\n- **front-end development** (90% of time):\n  - vanilla **JavaScript — ECMAScript6** (e.g. classes, block scoped variables, template literals, arrow functions, destructuring assignments, promises, spread syntax, callbacks),\n  - frameworks or libraries **[React](https://reactjs.org/)** or **[Vue.js](https://vuejs.org/)** (e.g components, props, state, lifecycle) and\n  - JavaScript template engine **[Nunjucks](https://mozilla.github.io/nunjucks/)** (e.g. extends, macros, conditions, filters),\n- **back-end development** (10% of time):\n  - JavaScript runtime environment **[Node.js](https://nodejs.org/en/)**, framework **[Express](https://expressjs.com/)** and document database **[MongoDB](https://www.mongodb.com/)**,\n- communicating with **REST APIs**, handling **JSONs** and\n- basic **unit tests** with tool [Mocha](https://mochajs.org/).",
     "heading": "My skills to work with programming logic"
   }
 }
