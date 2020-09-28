@@ -245,8 +245,18 @@
     </c-box>
     {{ /* / Certificates and conferences */ }}
 
-    <br />
-    <hr />
+    {{ /* Footer */ }}
+    <c-box
+      background-color="black"
+      width="100%"
+      padding="10"
+      margin-top="20"
+      color="white"
+    >
+      Copyright 2015-{{ currentDate('year') }} © Website last generated at
+      {{ currentDate('all') }}.
+    </c-box>
+
     <br />
     <pre>{{ doc }}</pre>
   </div>
@@ -368,7 +378,7 @@ export default {
       });
 
       return list;
-    }
+    },
   },
   methods: {
     calculateExperiencePeriod (startDate) {
@@ -379,6 +389,18 @@ export default {
 
       return `${numberOfYears}${suffixSign}`;
     },
+    currentDate(part) {
+      const date = new Date();
+      let currentDate;
+
+      if (part === 'year') {
+        currentDate = date.getFullYear();
+      } else if (part === 'all') {
+        currentDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+      }
+
+      return currentDate;
+    }
   },
   head() {
     return {
