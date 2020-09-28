@@ -69,8 +69,8 @@
         variant-color="black"
         @click="isVisible.experiencePeriod = !isVisible.experiencePeriod"
       >
-        <span v-if="isVisible.experiencePeriod">Hide code</span>
-        <span v-if="!isVisible.experiencePeriod">Show code</span>
+        <span v-show="isVisible.experiencePeriod">Hide code</span>
+        <span v-show="!isVisible.experiencePeriod">Show code</span>
       </c-button>
       <c-tabs
         v-show="isVisible.experiencePeriod"
@@ -107,15 +107,15 @@
       </c-tabs>
       {{ /* / Experince period */ }}
       {{ /* Number of coffee cups drank */ }}
-      <c-stat v-if="numberOfCoffeeCupsDrank > 0">
+      <c-stat v-show="numberOfCoffeeCupsDrank > 0">
         <c-stat-number>
           {{ numberOfCoffeeCupsDrank }}
         </c-stat-number>
         <c-stat-label>
-          <span v-if="numberOfCoffeeCupsDrank === 1">
+          <span v-show="numberOfCoffeeCupsDrank === 1">
             {{ doc.stats.part3.singular }}
           </span>
-          <span v-if="numberOfCoffeeCupsDrank > 1">
+          <span v-show="numberOfCoffeeCupsDrank > 1">
             {{ doc.stats.part3.plural }}
           </span>
         </c-stat-label>
@@ -128,8 +128,8 @@
           isVisible.numberOfCoffeeCupsDrank = !isVisible.numberOfCoffeeCupsDrank
         "
       >
-        <span v-if="isVisible.numberOfCoffeeCupsDrank">Hide code</span>
-        <span v-if="!isVisible.numberOfCoffeeCupsDrank">Show code</span>
+        <span v-show="isVisible.numberOfCoffeeCupsDrank">Hide code</span>
+        <span v-show="!isVisible.numberOfCoffeeCupsDrank">Show code</span>
       </c-button>
       <c-tabs
         v-show="isVisible.numberOfCoffeeCupsDrank"
