@@ -53,21 +53,21 @@
       color="white"
     >
       <c-heading as="h1">
-        <span v-html="doc.about.intro.heading.part1"></span>
+        <span v-html="doc.about.heading.part1"></span>
       </c-heading>
       <c-text
         as="p"
         font-size="24px"
         margin-top="2"
-        v-html="doc.about.intro.heading.part2"
+        v-html="doc.about.heading.part2"
       />
       <c-text as="p" margin-top="10">
-        <span v-html="doc.about.intro.additionalText.textBefore" />
-        <c-link :href="doc.about.intro.additionalText.link.href" is-external>
-          {{ doc.about.intro.additionalText.link.text }}
+        <span v-html="doc.about.additionalText.textBefore" />
+        <c-link :href="doc.about.additionalText.link.href" is-external>
+          {{ doc.about.additionalText.link.text }}
           <c-icon name="external-link-alt" margin-left="2px" />
         </c-link>
-        <span v-html="doc.about.intro.additionalText.textAfter" />
+        <span v-html="doc.about.additionalText.textAfter" />
       </c-text>
       <c-box padding-top="5">
         <c-button
