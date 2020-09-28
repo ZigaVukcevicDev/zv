@@ -289,6 +289,27 @@
     </c-box>
     {{ /* / Certificates and conferences */ }}
 
+    {{ /* Carousel */ }}
+    <div class="carousel-wrapper">
+      <client-only>
+        <carousel v-bind="options">
+          <slide class="img-wrapper">
+            <img :src="require('@/assets/images/carousel/cat-1.png')" />
+          </slide>
+          <slide class="img-wrapper">
+            <img :src="require('@/assets/images/carousel/cat-2.jpg')" />
+          </slide>
+          <slide class="img-wrapper">
+            <img :src="require('@/assets/images/carousel/cat-1.png')" />
+          </slide>
+          <slide class="img-wrapper">
+            <img :src="require('@/assets/images/carousel/cat-2.jpg')" />
+          </slide>
+        </carousel>
+      </client-only>
+    </div>
+    {{ /* / Carousel */ }}
+
     {{ /* Footer */ }}
     <c-box
       background-color="black"
@@ -329,7 +350,7 @@ import {
   CMenuItem,
   CMenuGroup,
   CMenuDivider,
-} from '@chakra-ui/vue'
+} from '@chakra-ui/vue';
 
 export default {
   name: 'App',
@@ -355,7 +376,7 @@ export default {
     CMenuList,
     CMenuItem,
     CMenuGroup,
-    CMenuDivider,
+    CMenuDivider
   },
   async asyncData ({ $content }) {
     const doc = {
@@ -389,6 +410,11 @@ export default {
       isVisible: {
         experiencePeriod: false,
         numberOfCoffeeCupsDrank: false,
+      },
+      options: {
+        loop: true,
+        perPage: 3,
+        paginationEnabled: true,
       }
     }
   },
@@ -465,3 +491,21 @@ export default {
   },
 }
 </script>
+
+<style>
+.carousel-wrapper {
+  padding: 40px;
+  height: 150px;
+}
+
+.carousel-wrapper .VueCarousel-slide {
+  text-align: center;
+}
+
+.img-wrapper img {
+  margin: auto;
+  width: 200px;
+  height: 100px;
+  background-image: linear-gradient(gray 100%, transparent 0);
+}
+</style>

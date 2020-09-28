@@ -30,7 +30,8 @@
     "@nuxtjs/emotion": "^0.0.1",
     "@nuxtjs/markdownit": "^1.2.10",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "nuxt": "^2.14.6",
+    "vue-carousel": "^0.18.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
