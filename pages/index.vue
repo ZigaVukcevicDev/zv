@@ -179,25 +179,37 @@
       <c-heading as="h2" margin-bottom="5">
         {{ doc.skills.main.heading }}
       </c-heading>
-      <div v-html="$md.render(doc.skills.main.list)" />
+      <c-box
+        width="75%"
+        margin-left="5"
+        v-html="$md.render(doc.skills.main.list)"
+      />
     </c-box>
     {{ /* / My main skills */ }}
 
     {{ /* My visual output skills */ }}
-    <c-box width="100%" padding-top="5" padding-left="10">
+    <c-box width="100%" padding-top="10" padding-left="10">
       <c-heading as="h2" margin-bottom="5">
         {{ doc.skills.visualOutput.heading }}
       </c-heading>
-      <div v-html="$md.render(doc.skills.visualOutput.list)" />
+      <c-box
+        width="75%"
+        margin-left="5"
+        v-html="$md.render(doc.skills.visualOutput.list)"
+      />
     </c-box>
     {{ /* / My visual output skills */ }}
 
     {{ /* My programming logic skills */ }}
-    <c-box width="100%" padding-top="5" padding-left="10">
+    <c-box width="100%" padding-top="10" padding-left="10">
       <c-heading as="h2" margin-bottom="5">
         {{ doc.skills.programmingLogic.heading }}
       </c-heading>
-      <div v-html="$md.render(doc.skills.programmingLogic.list)" />
+      <c-box
+        width="75%"
+        margin-left="5"
+        v-html="$md.render(doc.skills.programmingLogic.list)"
+      />
     </c-box>
     {{ /* / My programming logic skills */ }}
 
