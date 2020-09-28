@@ -43,7 +43,7 @@
     </c-box>
     {{ /* / Menu */ }}
 
-    {{ /* Header */ }}
+    {{ /* About */ }}
     <c-box
       background-color="black"
       width="100%"
@@ -53,21 +53,21 @@
       color="white"
     >
       <c-heading as="h1">
-        <span v-html="doc.header.intro.heading.part1"></span>
+        <span v-html="doc.about.intro.heading.part1"></span>
       </c-heading>
       <c-text
         as="p"
         font-size="24px"
         margin-top="2"
-        v-html="doc.header.intro.heading.part2"
+        v-html="doc.about.intro.heading.part2"
       />
       <c-text as="p" margin-top="10">
-        <span v-html="doc.header.intro.additionalText.textBefore" />
-        <c-link :href="doc.header.intro.additionalText.link.href" is-external>
-          {{ doc.header.intro.additionalText.link.text }}
+        <span v-html="doc.about.intro.additionalText.textBefore" />
+        <c-link :href="doc.about.intro.additionalText.link.href" is-external>
+          {{ doc.about.intro.additionalText.link.text }}
           <c-icon name="external-link-alt" margin-left="2px" />
         </c-link>
-        <span v-html="doc.header.intro.additionalText.textAfter" />
+        <span v-html="doc.about.intro.additionalText.textAfter" />
       </c-text>
       <c-box padding-top="5">
         <c-button
@@ -88,7 +88,7 @@
         </c-button>
       </c-box>
     </c-box>
-    {{ /* / Header */ }}
+    {{ /* / About */ }}
 
     {{ /* Stats  */ }}
     <c-box width="100%" padding="10">
@@ -359,7 +359,7 @@ export default {
   },
   async asyncData ({ $content }) {
     const doc = {
-      header: await $content('header').fetch(),
+      about: await $content('about').fetch(),
       stats: await $content('statistics').fetch(),
       skills: await $content('skills').fetch(),
       education: await $content('education').fetch(),

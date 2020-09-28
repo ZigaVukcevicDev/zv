@@ -11,10 +11,10 @@ collections:
     editor:
       preview: false
     files:
-      - name: 'header'
-        label: 'Header'
+      - name: 'about'
+        label: 'About'
         format: 'json'
-        file: 'content/header.json'
+        file: 'content/about.json'
         fields:
           - label: "Introduction"
             name: "intro"
