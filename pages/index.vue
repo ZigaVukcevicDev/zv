@@ -264,27 +264,33 @@
     {{ /* / My main skills */ }}
 
     {{ /* Project 1 */ }}
-    <c-box width="100%" padding-top="20" padding-bottom="10" padding-left="10">
+    <c-box width="75%" padding-top="20" padding-bottom="10" padding-left="10">
       <c-heading id="project-1" as="h2" margin-bottom="5">
         Project 1
       </c-heading>
-      <div class="example">
+      <div class="swiper">
         <swiper ref="swiper" :options="swiperOptions">
           <swiper-slide>
             <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
           </swiper-slide>
           <swiper-slide>
-            <img :src="require('@/assets/images/carousel/cat-2.jpg')" alt="" />
+            <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
           </swiper-slide>
           <swiper-slide>
             <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
           </swiper-slide>
           <swiper-slide>
-            <img :src="require('@/assets/images/carousel/cat-2.jpg')" alt="" />
+            <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
+          </swiper-slide>
+          <swiper-slide>
+            <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
+          </swiper-slide>
+          <swiper-slide>
+            <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
           </swiper-slide>
           <div slot="pagination" class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+          <div slot="button-prev" class="swiper-button-prev"></div>
+          <div slot="button-next" class="swiper-button-next"></div>
         </swiper>
       </div>
     </c-box>
@@ -456,11 +462,12 @@ export default {
       swiperOptions: {
         loop: false,
         slidesPerView: 3,
-        centeredSlides: true,
+        // centeredSlides: true,
         spaceBetween: 30,
-        initialSlide: 2,
+        // initialSlide: 2,
         pagination: {
           el: '.swiper-pagination',
+          clickable: true,
         },
         navigation: {
           nextEl: '.swiper-button-next',
@@ -546,22 +553,43 @@ export default {
 </script>
 
 <style>
-.example {
+.swiper {
   height: auto;
-}
-
-.example .swiper {
-  height: 300px;
   width: 100%;
 }
 
-.example .swiper .swiper-slide {
+.swiper .swiper-container {
+  padding-bottom: 40px;
+}
+
+.swiper .swiper-slide {
   text-align: center;
   font-size: 38px;
   font-weight: 700;
-  background-color: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.swiper .swiper-pagination-bullets {
+  bottom: 0;
+}
+
+.swiper .swiper-pagination-bullet-active {
+  background-color: #000;
+}
+
+.swiper .swiper-button-prev,
+.swiper .swiper-button-next {
+  top: calc(50% - 20px);
+  color: #fff;
+}
+
+.swiper .swiper-button-prev {
+  right: auto !important;
+}
+
+.swiper .swiper-button-next {
+  left: auto !important;
 }
 </style>
