@@ -16,12 +16,12 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [],
+  css: ['swiper/swiper-bundle.min.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    { src: './plugins/vue-carousel.js', mode: 'client' },
-    { src: './plugins/vue-scroll-to.js', mode: 'client' },
+    { src: '@/plugins/vue-awesome-swiper.js' },
+    { src: '@/plugins/vue-scroll-to.js', mode: 'client' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

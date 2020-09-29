@@ -39,7 +39,9 @@
           </c-menu-group>
           <c-menu-divider />
           <c-menu-group title="Projects">
-            <c-menu-item padding-left="10">Project 1</c-menu-item>
+            <c-menu-item v-scroll-to="'#project-1'" padding-left="10">
+              Project 1
+            </c-menu-item>
             <c-menu-item padding-left="10">Project 2</c-menu-item>
             <c-menu-item padding-left="10">Project 3</c-menu-item>
           </c-menu-group>
@@ -261,6 +263,33 @@
     </c-box>
     {{ /* / My main skills */ }}
 
+    {{ /* Project 1 */ }}
+    <c-box width="100%" padding-top="20" padding-bottom="10" padding-left="10">
+      <c-heading id="project-1" as="h2" margin-bottom="5">
+        Project 1
+      </c-heading>
+      <div class="example">
+        <swiper ref="swiper" :options="swiperOptions">
+          <swiper-slide>
+            <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
+          </swiper-slide>
+          <swiper-slide>
+            <img :src="require('@/assets/images/carousel/cat-2.jpg')" alt="" />
+          </swiper-slide>
+          <swiper-slide>
+            <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
+          </swiper-slide>
+          <swiper-slide>
+            <img :src="require('@/assets/images/carousel/cat-2.jpg')" alt="" />
+          </swiper-slide>
+          <div slot="pagination" class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </swiper>
+      </div>
+    </c-box>
+    {{ /* / Project 1 */ }}
+
     {{ /* My visual output skills */ }}
     <c-box width="100%" padding-top="10" padding-left="10">
       <c-heading id="skills-visual-output" as="h2" margin-bottom="5">
@@ -318,27 +347,6 @@
       />
     </c-box>
     {{ /* / Certificates and conferences */ }}
-
-    {{ /* Carousel */ }}
-    <div class="carousel-wrapper">
-      <client-only>
-        <carousel v-bind="options">
-          <slide class="img-wrapper">
-            <img :src="require('@/assets/images/carousel/cat-1.png')" />
-          </slide>
-          <slide class="img-wrapper">
-            <img :src="require('@/assets/images/carousel/cat-2.jpg')" />
-          </slide>
-          <slide class="img-wrapper">
-            <img :src="require('@/assets/images/carousel/cat-1.png')" />
-          </slide>
-          <slide class="img-wrapper">
-            <img :src="require('@/assets/images/carousel/cat-2.jpg')" />
-          </slide>
-        </carousel>
-      </client-only>
-    </div>
-    {{ /* / Carousel */ }}
 
     {{ /* Footer */ }}
     <c-box
@@ -445,10 +453,19 @@ export default {
         experiencePeriod: false,
         numberOfCoffeeCupsDrank: false,
       },
-      options: {
-        loop: true,
-        perPage: 3,
-        paginationEnabled: true,
+      swiperOptions: {
+        loop: false,
+        slidesPerView: 3,
+        centeredSlides: true,
+        spaceBetween: 30,
+        initialSlide: 2,
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
       }
     }
   },
@@ -470,7 +487,7 @@ export default {
         case (currentLocalHour >= 17 && currentLocalHour <= 23):
           numberOfCups = 3;
           break;
-        // Any other time (covers from 0:00 to 7:59 - usually sleeping at that time)
+        // Any other time (covers cases from 0:00 to 7:59 - usually sleeping at that time)
         default:
           numberOfCups = 0;
       }
@@ -518,7 +535,7 @@ export default {
         : `${day}.${month}.${year} at ${hours}:${minutes}`;
 
       return timeStamp;
-    }
+    },
   },
   head() {
     return {
@@ -529,19 +546,22 @@ export default {
 </script>
 
 <style>
-.carousel-wrapper {
-  padding: 40px;
-  height: 150px;
+.example {
+  height: auto;
 }
 
-.carousel-wrapper .VueCarousel-slide {
+.example .swiper {
+  height: 300px;
+  width: 100%;
+}
+
+.example .swiper .swiper-slide {
   text-align: center;
-}
-
-.img-wrapper img {
-  margin: auto;
-  width: 200px;
-  height: 100px;
-  background-image: linear-gradient(gray 100%, transparent 0);
+  font-size: 38px;
+  font-weight: 700;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

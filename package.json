@@ -31,8 +31,11 @@
     "@nuxtjs/markdownit": "^1.2.10",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
+    "swiper": "6.3.2",
+    "vue-awesome-swiper": "4.1.1",
     "vue-carousel": "^0.18.0",
-    "vue-scrollto": "^2.18.2"
+    "vue-scrollto": "^2.18.2",
+    "vue-slick-carousel": "^1.0.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",

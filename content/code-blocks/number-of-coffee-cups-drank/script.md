@@ -17,7 +17,7 @@ computed: {
       case (currentLocalHour >= 17 && currentLocalHour <= 23):
         numberOfCups = 3;
         break;
-      // Any other time (covers from 0:00 to 7:59 - usually sleeping at that time)
+      // Any other time (covers cases from 0:00 to 7:59 - usually sleeping at that time)
       default:
         numberOfCups = 0;
     }
