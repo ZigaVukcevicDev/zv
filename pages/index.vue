@@ -318,8 +318,12 @@
       margin-top="20"
       color="white"
     >
-      Copyright 2015-{{ currentDate('year') }} © Website last generated at
-      {{ currentDate('all') }}.
+      <c-text>
+        Copyright 2015-{{ currentTimeStamp(true) }} © zigavukcevic.dev
+      </c-text>
+      <c-text as="small">
+        Website last generated {{ currentTimeStamp() }}.
+      </c-text>
     </c-box>
 
     <br />
@@ -471,17 +475,19 @@ export default {
 
       return `${numberOfYears}${suffixSign}`;
     },
-    currentDate(part) {
+    currentTimeStamp(isOnlyYearShown) {
       const date = new Date();
-      let currentDate;
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      const hours = date.getHours();
+      const minutes = (`0${date.getMinutes()}`).slice(-2);
 
-      if (part === 'year') {
-        currentDate = date.getFullYear();
-      } else if (part === 'all') {
-        currentDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
-      }
+      const timeStamp = (isOnlyYearShown)
+        ? year
+        : `${day}.${month}.${year} at ${hours}:${minutes}`;
 
-      return currentDate;
+      return timeStamp;
     }
   },
   head() {
