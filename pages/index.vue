@@ -288,6 +288,12 @@
           <swiper-slide>
             <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
           </swiper-slide>
+          <img
+            slot="pagination"
+            class="iphone-mockup"
+            :src="require('@/assets/images/carousel/iphone-mockup.png')"
+            alt=""
+          />
           <div slot="pagination" class="swiper-pagination"></div>
           <div slot="button-prev" class="swiper-button-prev"></div>
           <div slot="button-next" class="swiper-button-next"></div>
@@ -556,16 +562,16 @@ export default {
 .swiper {
   height: auto;
   width: 100%;
+  position: relative !important;
 }
 
 .swiper .swiper-container {
-  padding-bottom: 40px;
+  padding-top: 185px;
+  padding-bottom: 220px;
+  position: static !important;
 }
 
 .swiper .swiper-slide {
-  text-align: center;
-  font-size: 38px;
-  font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -591,5 +597,13 @@ export default {
 
 .swiper .swiper-button-next {
   left: auto !important;
+}
+
+.swiper .iphone-mockup {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 180px);
+  width: 360px;
+  z-index: 1;
 }
 </style>
