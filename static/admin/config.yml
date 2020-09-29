@@ -76,7 +76,7 @@ collections:
         format: 'json'
         file: 'content/education.json'
         fields:
-          - { label: "Show on page", name: "isVisible", widget: "boolean" }
+          - { label: "Visible on page", name: "isVisible", widget: "boolean" }
           - { label: "Heading", name: "heading", widget: "string", required: true }
           - { label: "Text", name: "richText", widget: "markdown", buttons: ["bold", "link"], editor_components: [], mode: "rich_text", minimal: true, required: true }
       - name: 'certificatesAndConferences'
@@ -84,6 +84,6 @@ collections:
         format: 'json'
         file: 'content/certificates-and-conferences.json'
         fields:
-          - { label: "Show on page", name: "isVisible", widget: "boolean" }
+          - { label: "Visible on page", name: "isVisible", widget: "boolean" }
           - { label: "Heading", name: "heading", widget: "string", required: true }
           - { label: "List", name: "list", widget: "markdown", buttons: ["heading-three", "bold", "link", "bulleted-list"], editor_components: [], mode: "rich_text", minimal: true, required: true }

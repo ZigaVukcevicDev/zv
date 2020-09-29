@@ -21,11 +21,21 @@
         </c-menu-button>
         <c-menu-list min-width="180px">
           <c-menu-group title="Skills">
-            <c-menu-item padding-left="10">Main</c-menu-item>
-            <c-menu-item padding-left="10">Produce visual output</c-menu-item>
-            <c-menu-item padding-left="10"
-              >Work with programming logic</c-menu-item
+            <c-menu-item v-scroll-to="'#skills-main'" padding-left="10">
+              Main skills
+            </c-menu-item>
+            <c-menu-item
+              v-scroll-to="'#skills-visual-output'"
+              padding-left="10"
             >
+              To produce visual output
+            </c-menu-item>
+            <c-menu-item
+              v-scroll-to="'#skills-programming-logic'"
+              padding-left="10"
+            >
+              To work with programming logic
+            </c-menu-item>
           </c-menu-group>
           <c-menu-divider />
           <c-menu-group title="Projects">
@@ -33,10 +43,30 @@
             <c-menu-item padding-left="10">Project 2</c-menu-item>
             <c-menu-item padding-left="10">Project 3</c-menu-item>
           </c-menu-group>
-          <c-menu-divider />
-          <c-menu-group>
-            <c-menu-item>Education</c-menu-item>
-            <c-menu-item>Certificates and conferences</c-menu-item>
+          <c-menu-divider
+            v-if="
+              doc.education.isVisible ||
+              doc.certificatesAndConferences.isVisible
+            "
+          />
+          <c-menu-group
+            v-if="
+              doc.education.isVisible ||
+              doc.certificatesAndConferences.isVisible
+            "
+          >
+            <c-menu-item
+              v-if="doc.education.isVisible"
+              v-scroll-to="'#education'"
+            >
+              Education
+            </c-menu-item>
+            <c-menu-item
+              v-if="doc.certificatesAndConferences.isVisible"
+              v-scroll-to="'#certificates-and-conferences'"
+            >
+              Certificates and conferences
+            </c-menu-item>
           </c-menu-group>
         </c-menu-list>
       </c-menu>
@@ -220,7 +250,7 @@
 
     {{ /* My main skills */ }}
     <c-box width="100%" padding-top="5" padding-left="10">
-      <c-heading as="h2" margin-bottom="5">
+      <c-heading id="skills-main" as="h2" margin-bottom="5">
         {{ doc.skills.main.heading }}
       </c-heading>
       <c-box
@@ -233,7 +263,7 @@
 
     {{ /* My visual output skills */ }}
     <c-box width="100%" padding-top="10" padding-left="10">
-      <c-heading as="h2" margin-bottom="5">
+      <c-heading id="skills-visual-output" as="h2" margin-bottom="5">
         {{ doc.skills.visualOutput.heading }}
       </c-heading>
       <c-box
@@ -246,7 +276,7 @@
 
     {{ /* My programming logic skills */ }}
     <c-box width="100%" padding-top="10" padding-left="10">
-      <c-heading as="h2" margin-bottom="5">
+      <c-heading id="skills-programming-logic" as="h2" margin-bottom="5">
         {{ doc.skills.programmingLogic.heading }}
       </c-heading>
       <c-box
@@ -264,7 +294,7 @@
       padding-top="10"
       padding-left="10"
     >
-      <c-heading as="h2" margin-bottom="5">
+      <c-heading id="education" as="h2" margin-bottom="5">
         {{ doc.education.heading }}
       </c-heading>
       <c-box width="75%" v-html="$md.render(doc.education.richText)" />
@@ -278,7 +308,7 @@
       padding-top="10"
       padding-left="10"
     >
-      <c-heading as="h2" margin-bottom="5">
+      <c-heading id="certificates-and-conferences" as="h2" margin-bottom="5">
         {{ doc.certificatesAndConferences.heading }}
       </c-heading>
       <c-box
@@ -326,8 +356,8 @@
       </c-text>
     </c-box>
 
-    <br />
-    <pre>{{ doc }}</pre>
+    <!-- <br />
+    <pre>{{ doc }}</pre> -->
   </div>
 </template>
 
