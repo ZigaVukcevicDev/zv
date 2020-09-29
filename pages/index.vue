@@ -270,24 +270,14 @@
       </c-heading>
       <div class="swiper">
         <swiper ref="swiper" :options="swiperOptions">
+          <swiper-slide>Slide 1</swiper-slide>
           <swiper-slide>
             <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
           </swiper-slide>
-          <swiper-slide>
-            <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
-          </swiper-slide>
-          <swiper-slide>
-            <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
-          </swiper-slide>
-          <swiper-slide>
-            <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
-          </swiper-slide>
-          <swiper-slide>
-            <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
-          </swiper-slide>
-          <swiper-slide>
-            <img :src="require('@/assets/images/carousel/cat-1.png')" alt="" />
-          </swiper-slide>
+          <swiper-slide>Slide 3</swiper-slide>
+          <swiper-slide>Slide 4</swiper-slide>
+          <swiper-slide>Slide 5</swiper-slide>
+          <swiper-slide>Slide 6</swiper-slide>
           <img
             slot="pagination"
             class="iphone-mockup"
@@ -469,7 +459,7 @@ export default {
         loop: false,
         slidesPerView: 3,
         // centeredSlides: true,
-        spaceBetween: 30,
+        spaceBetween: 140,
         // initialSlide: 2,
         pagination: {
           el: '.swiper-pagination',
@@ -566,8 +556,8 @@ export default {
 }
 
 .swiper .swiper-container {
-  padding-top: 185px;
-  padding-bottom: 220px;
+  padding-top: 0;
+  padding-bottom: 40px;
   position: static !important;
 }
 
@@ -575,6 +565,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: gray;
+  height: 525px;
+  border-radius: 40px;
 }
 
 .swiper .swiper-pagination-bullets {
