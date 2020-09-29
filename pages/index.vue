@@ -278,6 +278,9 @@
           <swiper-slide>Slide 4</swiper-slide>
           <swiper-slide>Slide 5</swiper-slide>
           <swiper-slide>Slide 6</swiper-slide>
+          <swiper-slide>Slide 7</swiper-slide>
+          <swiper-slide>Slide 8</swiper-slide>
+          <swiper-slide>Slide 9</swiper-slide>
           <img
             slot="pagination"
             class="iphone-mockup"
@@ -565,7 +568,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: gray;
+  background-color: ghostwhite;
   height: 525px;
   border-radius: 40px;
 }
@@ -581,7 +584,7 @@ export default {
 .swiper .swiper-button-prev,
 .swiper .swiper-button-next {
   top: calc(50% - 20px);
-  color: #fff;
+  color: #000;
 }
 
 .swiper .swiper-button-prev {
