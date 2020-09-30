@@ -15,7 +15,9 @@
       justify-content="flex-end"
     >
       <c-menu>
-        <c-menu-button right-icon="chevron-down">Menu</c-menu-button>
+        <c-menu-button right-icon="chevron-down">
+          <c-icon name="bars" />
+        </c-menu-button>
         <c-menu-list min-width="180px">
           <c-menu-group title="Skills">
             <c-menu-item v-scroll-to="'#skills-main'" padding-left="10">

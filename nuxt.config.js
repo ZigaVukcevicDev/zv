@@ -1,6 +1,7 @@
 import {
   faExternalLinkAlt,
   faVolumeUp,
+  faBars,
 } from '@fortawesome/free-solid-svg-icons'
 
 export default {
@@ -59,7 +60,11 @@ export default {
   chakra: {
     icons: {
       iconPack: 'fa',
-      iconSet: { faExternalLinkAlt, faVolumeUp },
+      iconSet: {
+        faExternalLinkAlt,
+        faVolumeUp,
+        faBars,
+      },
     },
   },
 
