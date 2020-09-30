@@ -1,7 +1,8 @@
 {
   "heading": {
-    "part1": "Hi,<br />my name is Žiga and I'm a <strong>Lead engineer</strong>,<br />",
-    "part2": "mostly focused on front-end web development."
+    "part1": "Hi,<br />my name is Žiga",
+    "part2": "and I'm a <strong>Lead engineer</strong>,<br />",
+    "part3": "mostly focused on front-end web development."
   },
   "additionalText": {
     "textBefore": "I have been working in the web industry almost a decade and a half. My current spot is at company",
