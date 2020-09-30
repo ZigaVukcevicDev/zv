@@ -22,6 +22,7 @@ collections:
             fields:
               - { label: "Part 1", name: "part1", widget: "string", required: true }
               - { label: "Part 2", name: "part2", widget: "string", required: true }
+              - { label: "Part 3", name: "part3", widget: "string", required: true }
           - label: "Additional text"
             name: "additionalText"
             widget: "object"

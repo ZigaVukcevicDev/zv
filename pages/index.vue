@@ -86,12 +86,26 @@
     >
       <c-heading as="h1">
         <span v-html="doc.about.heading.part1"></span>
+        <c-pseudo-box
+          as="button"
+          display="inline-block"
+          @click="pronunceName()"
+        >
+          <c-icon name="volume-up" margin-left="2px" />
+          <audio ref="audio-name-pronunciation">
+            <source
+              :src="require('@/assets/audio/pronounce-ziga.mp3')"
+              type="audio/mpeg"
+            />
+          </audio>
+        </c-pseudo-box>
+        <span v-html="doc.about.heading.part2"></span>
       </c-heading>
       <c-text
         as="p"
         font-size="24px"
         margin-top="2"
-        v-html="doc.about.heading.part2"
+        v-html="doc.about.heading.part3"
       />
       <c-text as="p" margin-top="10">
         <span v-html="doc.about.additionalText.textBefore" />
@@ -397,6 +411,7 @@ import {
   CMenuItem,
   CMenuGroup,
   CMenuDivider,
+  CPseudoBox
 } from '@chakra-ui/vue';
 
 export default {
@@ -423,7 +438,8 @@ export default {
     CMenuList,
     CMenuItem,
     CMenuGroup,
-    CMenuDivider
+    CMenuDivider,
+    CPseudoBox
   },
   async asyncData ({ $content }) {
     const doc = {
@@ -520,6 +536,9 @@ export default {
     },
   },
   methods: {
+    pronunceName () {
+      this.$refs['audio-name-pronunciation'].play();
+    },
     calculateExperiencePeriod (startDate) {
       const numberOfYears = Math.round(
         (new Date() - new Date(startDate)) / 1000 / 60 / 60 / 24 / 365

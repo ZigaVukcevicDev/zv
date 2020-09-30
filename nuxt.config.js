@@ -1,4 +1,7 @@
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import {
+  faExternalLinkAlt,
+  faVolumeUp,
+} from '@fortawesome/free-solid-svg-icons'
 
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
@@ -56,12 +59,30 @@ export default {
   chakra: {
     icons: {
       iconPack: 'fa',
-      iconSet: { faExternalLinkAlt },
+      iconSet: { faExternalLinkAlt, faVolumeUp },
     },
   },
 
   content: {},
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    loaders: {
+      vue: {
+        transformAssetUrls: {
+          audio: 'src',
+        },
+      },
+    },
+
+    extend(config) {
+      config.module.rules.push({
+        test: /\.mp3$/,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+        },
+      })
+    },
+  },
 }
