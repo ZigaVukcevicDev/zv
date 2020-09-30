@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <c-box v-bind="mainStyles[colorMode]" padding-left="10" padding-right="10">
     {{ /* Draft notice */ }}
     <c-box background-color="tomato" width="100%" padding="4" color="white">
       This is a page draft.
@@ -7,13 +7,21 @@
     {{ /* / Draft notice */ }}
 
     {{ /* Menu */ }}
-    <c-box
-      display="flex"
-      width="100%"
-      padding-top="10"
-      padding-right="10"
-      justify-content="flex-end"
-    >
+    <c-box display="flex" width="100%" justify-content="flex-end">
+      <c-button
+        size="xs"
+        variant="outline"
+        :is-disabled="true"
+        margin-right="3"
+      >
+        Show wireframe
+      </c-button>
+
+      <c-icon-button
+        :icon="colorMode === 'light' ? 'moon' : 'sun'"
+        margin-right="3"
+        @click="toggleColorMode"
+      />
       <c-menu>
         <c-menu-button right-icon="chevron-down">
           <c-icon name="bars" />
@@ -75,7 +83,7 @@
     {{ /* / Menu */ }}
 
     {{ /* About */ }}
-    <c-box width="100%" padding-left="10" padding-right="10">
+    <c-box width="100%">
       <c-heading as="h1">
         <span v-html="doc.about.heading.part1"></span>
         <c-pseudo-box as="button" @click="pronunceName()">
@@ -130,19 +138,11 @@
         </c-link>
         <span v-html="doc.about.additionalText.textAfter" />
       </c-text>
-      <c-box padding-top="5">
-        <c-button size="xs" variant="outline" :is-disabled="true">
-          Show wireframe
-        </c-button>
-        <c-button size="xs" variant="outline" :is-disabled="true">
-          Enable dark mode
-        </c-button>
-      </c-box>
     </c-box>
     {{ /* / About */ }}
 
     {{ /* Stats  */ }}
-    <c-box width="100%" padding="10">
+    <c-box width="100%" padding-top="10" padding-bottom="10">
       {{ /* Experince period */ }}
       <c-stat>
         <c-stat-number>
@@ -270,7 +270,7 @@
     {{ /* / Stats */ }}
 
     {{ /* My main skills */ }}
-    <c-box width="100%" padding-top="5" padding-left="10">
+    <c-box width="100%" padding-top="5">
       <c-heading id="skills-main" as="h2" margin-bottom="5">
         {{ doc.skills.main.heading }}
       </c-heading>
@@ -283,7 +283,7 @@
     {{ /* / My main skills */ }}
 
     {{ /* Project 1 */ }}
-    <c-box width="75%" padding-top="20" padding-bottom="10" padding-left="10">
+    <c-box width="75%" padding-top="20" padding-bottom="10">
       <c-heading id="project-1" as="h2" margin-bottom="5">
         Project 1
       </c-heading>
@@ -315,7 +315,7 @@
     {{ /* / Project 1 */ }}
 
     {{ /* My visual output skills */ }}
-    <c-box width="100%" padding-top="10" padding-left="10">
+    <c-box width="100%" padding-top="10">
       <c-heading id="skills-visual-output" as="h2" margin-bottom="5">
         {{ doc.skills.visualOutput.heading }}
       </c-heading>
@@ -328,7 +328,7 @@
     {{ /* / My visual output skills */ }}
 
     {{ /* My programming logic skills */ }}
-    <c-box width="100%" padding-top="10" padding-left="10">
+    <c-box width="100%" padding-top="10">
       <c-heading id="skills-programming-logic" as="h2" margin-bottom="5">
         {{ doc.skills.programmingLogic.heading }}
       </c-heading>
@@ -341,12 +341,7 @@
     {{ /* / My programming logic skills */ }}
 
     {{ /* Education */ }}
-    <c-box
-      v-show="doc.education.isVisible"
-      width="100%"
-      padding-top="10"
-      padding-left="10"
-    >
+    <c-box v-show="doc.education.isVisible" width="100%" padding-top="10">
       <c-heading id="education" as="h2" margin-bottom="5">
         {{ doc.education.heading }}
       </c-heading>
@@ -359,7 +354,6 @@
       v-show="doc.certificatesAndConferences.isVisible"
       width="100%"
       padding-top="10"
-      padding-left="10"
     >
       <c-heading id="certificates-and-conferences" as="h2" margin-bottom="5">
         {{ doc.certificatesAndConferences.heading }}
@@ -373,7 +367,7 @@
     {{ /* / Certificates and conferences */ }}
 
     {{ /* Footer */ }}
-    <c-box width="100%" padding="10" margin-top="20">
+    <c-box width="100%" padding-top="10" padding-bottom="10" margin-top="20">
       <c-text>
         Copyright 2015-{{ currentTimeStamp(true) }} © zigavukcevic.dev
       </c-text>
@@ -384,7 +378,7 @@
 
     <!-- <br />
     <pre>{{ doc }}</pre> -->
-  </div>
+  </c-box>
 </template>
 
 <script lang="js">
@@ -410,7 +404,8 @@ import {
   CMenuItem,
   CMenuGroup,
   CMenuDivider,
-  CPseudoBox
+  CPseudoBox,
+  CIconButton,
 } from '@chakra-ui/vue';
 
 export default {
@@ -438,7 +433,8 @@ export default {
     CMenuItem,
     CMenuGroup,
     CMenuDivider,
-    CPseudoBox
+    CPseudoBox,
+    CIconButton,
   },
   async asyncData ({ $content }) {
     const doc = {
@@ -473,6 +469,16 @@ export default {
   },
   data () {
     return {
+      mainStyles: {
+        dark: {
+          bg: 'gray.700',
+          color: 'whiteAlpha.900'
+        },
+        light: {
+          bg: 'white',
+          color: 'gray.900'
+        }
+      },
       isVisible: {
         experiencePeriod: false,
         numberOfCoffeeCupsDrank: false,
@@ -494,6 +500,12 @@ export default {
     }
   },
   computed: {
+    colorMode ()  {
+      return this.$chakraColorMode();
+    },
+    toggleColorMode () {
+      return this.$toggleColorMode;
+    },
     numberOfCoffeeCupsDrank () {
       const currentLocalHour = new Date().getHours();
       let numberOfCups;
