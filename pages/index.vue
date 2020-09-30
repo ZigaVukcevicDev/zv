@@ -9,16 +9,13 @@
     {{ /* Menu */ }}
     <c-box
       display="flex"
-      background-color="black"
       width="100%"
       padding-top="10"
       padding-right="10"
       justify-content="flex-end"
     >
       <c-menu>
-        <c-menu-button right-icon="chevron-down" variant-color="black">
-          Menu
-        </c-menu-button>
+        <c-menu-button right-icon="chevron-down">Menu</c-menu-button>
         <c-menu-list min-width="180px">
           <c-menu-group title="Skills">
             <c-menu-item v-scroll-to="'#skills-main'" padding-left="10">
@@ -76,31 +73,47 @@
     {{ /* / Menu */ }}
 
     {{ /* About */ }}
-    <c-box
-      background-color="black"
-      width="100%"
-      padding-left="10"
-      padding-bottom="10"
-      padding-right="10"
-      color="white"
-    >
+    <c-box width="100%" padding-left="10" padding-right="10">
       <c-heading as="h1">
         <span v-html="doc.about.heading.part1"></span>
-        <c-pseudo-box
-          as="button"
-          display="inline-block"
-          @click="pronunceName()"
-        >
+        <c-pseudo-box as="button" @click="pronunceName()">
           <c-icon name="volume-up" margin-left="2px" />
-          <audio ref="audio-name-pronunciation">
+          <audio ref="audio-pronunce-name">
             <source
-              :src="require('@/assets/audio/pronounce-ziga.mp3')"
+              :src="require('@/assets/audio/pronounce-name.mp3')"
               type="audio/mpeg"
             />
           </audio>
         </c-pseudo-box>
         <span v-html="doc.about.heading.part2"></span>
       </c-heading>
+      <c-button
+        size="xs"
+        variant="outline"
+        variant-color="black"
+        @click="isVisible.pronunceName = !isVisible.pronunceName"
+      >
+        <span v-show="isVisible.pronunceName">Hide code</span>
+        <span v-show="!isVisible.pronunceName">Show code</span>
+      </c-button>
+      <c-tabs
+        v-show="isVisible.pronunceName"
+        variant="enclosed-colored"
+        align="end"
+      >
+        <c-tab-list>
+          <c-tab>Template</c-tab>
+          <c-tab>Script</c-tab>
+        </c-tab-list>
+        <c-tab-panels>
+          <c-tab-panel>
+            <nuxt-content :document="codeBlocks.pronunceName.template" />
+          </c-tab-panel>
+          <c-tab-panel>
+            <nuxt-content :document="codeBlocks.pronunceName.script" />
+          </c-tab-panel>
+        </c-tab-panels>
+      </c-tabs>
       <c-text
         as="p"
         font-size="24px"
@@ -116,20 +129,10 @@
         <span v-html="doc.about.additionalText.textAfter" />
       </c-text>
       <c-box padding-top="5">
-        <c-button
-          size="xs"
-          variant="outline"
-          variant-color="white"
-          :is-disabled="true"
-        >
+        <c-button size="xs" variant="outline" :is-disabled="true">
           Show wireframe
         </c-button>
-        <c-button
-          size="xs"
-          variant="outline"
-          variant-color="white"
-          :is-disabled="true"
-        >
+        <c-button size="xs" variant="outline" :is-disabled="true">
           Enable dark mode
         </c-button>
       </c-box>
@@ -368,13 +371,7 @@
     {{ /* / Certificates and conferences */ }}
 
     {{ /* Footer */ }}
-    <c-box
-      background-color="black"
-      width="100%"
-      padding="10"
-      margin-top="20"
-      color="white"
-    >
+    <c-box width="100%" padding="10" margin-top="20">
       <c-text>
         Copyright 2015-{{ currentTimeStamp(true) }} © zigavukcevic.dev
       </c-text>
@@ -451,6 +448,10 @@ export default {
     }
 
     const codeBlocks = {
+      pronunceName: {
+        template: await $content('code-blocks/pronunce-name/template').fetch(),
+        script: await $content('code-blocks/pronunce-name/script').fetch(),
+      },
       experiencePeriod: {
         template: await $content('code-blocks/experience-period/template').fetch(),
         script: await $content('code-blocks/experience-period/script').fetch(),
@@ -473,13 +474,12 @@ export default {
       isVisible: {
         experiencePeriod: false,
         numberOfCoffeeCupsDrank: false,
+        pronunceName: false,
       },
       swiperOptions: {
         loop: false,
         slidesPerView: 3,
-        // centeredSlides: true,
         spaceBetween: 140,
-        // initialSlide: 2,
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
@@ -537,7 +537,7 @@ export default {
   },
   methods: {
     pronunceName () {
-      this.$refs['audio-name-pronunciation'].play();
+      this.$refs['audio-pronunce-name'].play();
     },
     calculateExperiencePeriod (startDate) {
       const numberOfYears = Math.round(
