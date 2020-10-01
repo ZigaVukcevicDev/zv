@@ -88,3 +88,17 @@ collections:
           - { label: "Visible on page", name: "isVisible", widget: "boolean" }
           - { label: "Heading", name: "heading", widget: "string", required: true }
           - { label: "List", name: "list", widget: "markdown", buttons: ["heading-three", "bold", "link", "bulleted-list"], editor_components: [], mode: "rich_text", minimal: true, required: true }
+      - name: 'latestWorks'
+        label: 'Latest works'
+        format: 'json'
+        file: 'content/latest-works.json'
+        fields:
+          - label: "Project 1"
+            name: "project1"
+            widget: "object"
+            fields:
+              - { label: "Segment", name: "segment", widget: "string", required: true }
+              - { label: "Title", name: "title", widget: "string", required: true }
+              - { label: "Description", name: "description", widget: "markdown", minimal: true, required: true }
+              - { label: "Technologies", name: "technologies", widget: "markdown", minimal: true, required: true }
+              - { label: "Client", name: "client", widget: "string", required: true }
