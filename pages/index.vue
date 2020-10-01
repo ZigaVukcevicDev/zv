@@ -20,6 +20,7 @@
       <c-icon-button
         :icon="colorMode === 'light' ? 'moon' : 'sun'"
         margin-right="3"
+        aria-label="Switch color mode"
         @click="toggleColorMode"
       />
       <c-menu>
