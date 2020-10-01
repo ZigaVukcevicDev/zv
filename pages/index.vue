@@ -387,8 +387,8 @@
       </c-text>
     </c-box>
 
-    <!-- <br />
-    <pre>{{ doc }}</pre> -->
+    <br />
+    <pre>{{ doc }}</pre>
   </c-box>
 </template>
 
