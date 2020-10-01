@@ -283,15 +283,16 @@
     </c-box>
     {{ /* / My main skills */ }}
 
-    {{ /* Project 1 */ }}
+    {{ /* Latest work - project 1 */ }}
     <c-box width="75%" padding-top="20" padding-bottom="10">
       <p>{{ doc.latestWorks.project1.segment }}</p>
       <c-heading id="project-1" as="h2" margin-bottom="5">
         {{ doc.latestWorks.project1.title }}
       </c-heading>
-      <c-box>
-        {{ doc.latestWorks.project1.description }}
-      </c-box>
+      <c-box
+        margin-bottom="10"
+        v-html="$md.render(doc.latestWorks.project1.description)"
+      />
       <div class="swiper">
         <swiper ref="swiper" :options="swiperOptions">
           <swiper-slide>Slide 1</swiper-slide>
@@ -316,12 +317,13 @@
           <div slot="button-next" class="swiper-button-next"></div>
         </swiper>
       </div>
-      <c-box>
-        {{ doc.latestWorks.project1.technologies }}
-        <p>{{ doc.latestWorks.project1.client }}</p>
-      </c-box>
+      <c-box
+        margin-top="5"
+        v-html="$md.render(doc.latestWorks.project1.technologies)"
+      />
+      <p>{{ doc.latestWorks.project1.client }}</p>
     </c-box>
-    {{ /* / Project 1 */ }}
+    {{ /* / Latest work - project 1 */ }}
 
     {{ /* My visual output skills */ }}
     <c-box width="100%" padding-top="10">
