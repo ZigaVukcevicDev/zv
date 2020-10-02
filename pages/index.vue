@@ -388,6 +388,8 @@
 
       {{ /* Contact */ }}
       <c-box width="100%" padding-top="10">
+        <c-heading id="contact" as="h2" margin-bottom="5">Contact</c-heading>
+        <c-text>{{ doc.contact.text1 }}</c-text>
         <form name="contact" netlify>
           <p>
             <label>Name <input type="text" name="name" /></label>
@@ -399,6 +401,19 @@
             <button type="submit">Send</button>
           </p>
         </form>
+        <c-text>{{ doc.contact.text2 }}</c-text>
+        <c-box>
+          <c-link :href="doc.contact.link1.href" is-external>
+            <c-icon :name="doc.contact.link1.icon" margin-left="2px" />
+            {{ doc.contact.link1.text }}
+          </c-link>
+        </c-box>
+        <c-box>
+          <c-link :href="doc.contact.link2.href" is-external>
+            <c-icon :name="doc.contact.link2.icon" margin-left="2px" />
+            {{ doc.contact.link2.text }}
+          </c-link>
+        </c-box>
       </c-box>
       {{ /* / Contact */ }}
 
@@ -481,6 +496,7 @@ export default {
       education: await $content('education').fetch(),
       certificatesAndConferences: await $content('certificates-and-conferences').fetch(),
       latestWorks: await $content('latest-works').fetch(),
+      contact: await $content('contact').fetch(),
     }
 
     const codeBlocks = {

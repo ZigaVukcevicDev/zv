@@ -2,6 +2,7 @@ import {
   faExternalLinkAlt,
   faVolumeUp,
   faBars,
+  faEye,
 } from '@fortawesome/free-solid-svg-icons'
 
 export default {
@@ -64,6 +65,7 @@ export default {
         faExternalLinkAlt,
         faVolumeUp,
         faBars,
+        faEye,
       },
     },
   },
