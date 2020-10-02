@@ -533,15 +533,15 @@ export default {
             spaceBetween: 10
           },
           // when window width is >= 480px
-          480: {
-            slidesPerView: 3,
-            spaceBetween: 30
-          },
+          // 480: {
+          //   slidesPerView: 3,
+          //   spaceBetween: 30
+          // },
           // when window width is >= 640px
-          640: {
-            slidesPerView: 4,
-            spaceBetween: 40
-          }
+          // 640: {
+          //   slidesPerView: 4,
+          //   spaceBetween: 40
+          // }
         },
         pagination: {
           el: '.swiper-pagination',
