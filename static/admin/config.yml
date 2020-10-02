@@ -97,7 +97,6 @@ collections:
             name: "project1"
             widget: "object"
             fields:
-              - { label: "Segment", name: "segment", widget: "string", required: true }
               - { label: "Title", name: "title", widget: "string", required: true }
               - { label: "Description", name: "description", widget: "markdown", mode: "rich_text", minimal: true, required: true }
               - { label: "Technologies", name: "technologies", widget: "markdown", mode: "rich_text", minimal: true, required: true }

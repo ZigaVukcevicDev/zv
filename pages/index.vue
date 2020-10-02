@@ -285,7 +285,7 @@
 
     {{ /* Latest work - project 1 */ }}
     <c-box width="75%" padding-top="20" padding-bottom="10">
-      <p>{{ doc.latestWorks.project1.segment }}</p>
+      <p>Latest work</p>
       <c-heading id="project-1" as="h2" margin-bottom="5">
         {{ doc.latestWorks.project1.title }}
       </c-heading>
@@ -321,7 +321,7 @@
         margin-top="5"
         v-html="$md.render(doc.latestWorks.project1.technologies)"
       />
-      <p>{{ doc.latestWorks.project1.client }}</p>
+      <p>Client {{ doc.latestWorks.project1.client }}</p>
     </c-box>
     {{ /* / Latest work - project 1 */ }}
 

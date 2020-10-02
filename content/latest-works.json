@@ -1,10 +1,9 @@
 {
   "project1": {
-    "segment": "Latest work",
     "title": "Petrol website — the largest Slovenian energy company",
     "description": "A complete brand new website — there were around 80 templates coded for different subpages. Logic functionalities were made for designated parts of pages (e.g. map of gas locations).\n\nSee it live on [the official page](https://www.petrol.si/).",
     "Technologies": "Technologies used:\n\n- html5\n- css3\n- ...",
-    "client": "Client: Petrol d.d. and Renderspace d.o.o. / team development",
+    "client": "Petrol d.d. and Renderspace d.o.o. / team development",
     "technologies": "Technologies used:\n\n* html5\n* css3\n* ..."
   }
 }
