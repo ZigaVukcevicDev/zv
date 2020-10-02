@@ -332,6 +332,7 @@
       <p>Client {{ doc.latestWorks.project1.client }}</p>
       {{ /* / Latest work - project 1 */ }}
     </c-box>
+    {{ /* Container */ }}
     <c-box padding-left="10" padding-right="10">
       {{ /* My visual output skills */ }}
       <c-box width="100%" padding-top="10">
@@ -384,6 +385,22 @@
         />
       </c-box>
       {{ /* / Certificates and conferences */ }}
+
+      {{ /* Contact */ }}
+      <c-box width="100%" padding-top="10">
+        <form name="contact" netlify>
+          <p>
+            <label>Name <input type="text" name="name" /></label>
+          </p>
+          <p>
+            <label>Email <input type="email" name="email" /></label>
+          </p>
+          <p>
+            <button type="submit">Send</button>
+          </p>
+        </form>
+      </c-box>
+      {{ /* / Contact */ }}
 
       {{ /* Footer */ }}
       <c-box width="100%" padding-top="10" padding-bottom="10" margin-top="20">
