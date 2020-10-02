@@ -1,0 +1,14 @@
+{
+  "text1": "Please feel free to contact me.",
+  "text2": "See me at:",
+  "link1": {
+    "icon": "eye",
+    "text": "LinkedIn",
+    "href": "https://www.linkedin.com/in/ziga-vukcevic/"
+  },
+  "link2": {
+    "icon": "eye",
+    "text": "GitHub",
+    "href": "https://github.com/be-codified"
+  }
+}
