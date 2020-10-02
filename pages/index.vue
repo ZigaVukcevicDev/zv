@@ -81,7 +81,7 @@
               </c-menu-item>
             </c-menu-group>
             <c-menu-divider />
-            <c-menu-item v-scroll-to="'#contact'"> Contact me</c-menu-item>
+            <c-menu-item v-scroll-to="'#contact'">Contact me</c-menu-item>
           </c-menu-list>
         </c-menu>
       </c-box>
@@ -389,13 +389,38 @@
       {{ /* / Certificates and conferences */ }}
 
       {{ /* Contact */ }}
-      <c-box width="100%" padding-top="10">
+      <c-box width="50%" padding-top="10">
         <c-heading id="contact" as="h2" margin-bottom="5">
           Contact me
         </c-heading>
-        <c-text>{{ doc.contact.text1 }}</c-text>
+        <c-text margin-bottom="5">{{ doc.contact.text1 }}</c-text>
         <form name="form-contact" netlify>
-          <p>
+          <c-stack spacing="4">
+            <c-input-group>
+              <c-input-left-element>
+                <c-icon name="user" />
+              </c-input-left-element>
+              <c-input
+                name="nameFull"
+                type="text"
+                placeholder="Your full name"
+              />
+            </c-input-group>
+            <c-input-group>
+              <c-input-left-element>
+                <c-icon name="at" />
+              </c-input-left-element>
+              <c-input
+                name="emailAddress"
+                type="email"
+                placeholder="Your email address"
+              />
+            </c-input-group>
+            <c-textarea placeholder="Your message ..." />
+
+            <c-button>Send message</c-button>
+          </c-stack>
+          <!-- <p>
             <label>Your full name <input type="text" name="full-name" /></label>
           </p>
           <p>
@@ -408,9 +433,11 @@
           </p>
           <p>
             <button type="submit">Send message</button>
-          </p>
+          </p> -->
         </form>
-        <c-text>{{ doc.contact.text2 }}</c-text>
+        <c-text margin-top="5" margin-bottom="5">
+          {{ doc.contact.text2 }}
+        </c-text>
         <c-box>
           <c-link :href="doc.contact.link1.href" is-external>
             <c-icon :name="doc.contact.link1.icon" margin-left="2px" />
@@ -467,6 +494,11 @@ import {
   CMenuDivider,
   CPseudoBox,
   CIconButton,
+  CStack,
+  CInput,
+  CInputGroup,
+  CInputLeftElement,
+  CTextarea,
 } from '@chakra-ui/vue';
 
 export default {
@@ -496,6 +528,11 @@ export default {
     CMenuDivider,
     CPseudoBox,
     CIconButton,
+    CStack,
+    CInput,
+    CInputGroup,
+    CInputLeftElement,
+    CTextarea,
   },
   async asyncData ({ $content }) {
     const doc = {

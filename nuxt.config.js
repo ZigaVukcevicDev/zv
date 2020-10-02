@@ -3,6 +3,8 @@ import {
   faVolumeUp,
   faBars,
   faEye,
+  faUser,
+  faAt,
 } from '@fortawesome/free-solid-svg-icons'
 
 export default {
@@ -66,6 +68,8 @@ export default {
         faVolumeUp,
         faBars,
         faEye,
+        faAt,
+        faUser,
       },
     },
   },
