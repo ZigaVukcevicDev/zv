@@ -80,6 +80,8 @@
                 Certificates and conferences
               </c-menu-item>
             </c-menu-group>
+            <c-menu-divider />
+            <c-menu-item v-scroll-to="'#contact'"> Contact me</c-menu-item>
           </c-menu-list>
         </c-menu>
       </c-box>
@@ -388,17 +390,24 @@
 
       {{ /* Contact */ }}
       <c-box width="100%" padding-top="10">
-        <c-heading id="contact" as="h2" margin-bottom="5">Contact</c-heading>
+        <c-heading id="contact" as="h2" margin-bottom="5">
+          Contact me
+        </c-heading>
         <c-text>{{ doc.contact.text1 }}</c-text>
-        <form name="contact" netlify>
+        <form name="form-contact" netlify>
           <p>
-            <label>Name <input type="text" name="name" /></label>
+            <label>Your full name <input type="text" name="full-name" /></label>
           </p>
           <p>
-            <label>Email <input type="email" name="email" /></label>
+            <label
+              >Your email address <input type="email" name="email"
+            /></label>
           </p>
           <p>
-            <button type="submit">Send</button>
+            <label>Your message <textarea name="message"></textarea></label>
+          </p>
+          <p>
+            <button type="submit">Send message</button>
           </p>
         </form>
         <c-text>{{ doc.contact.text2 }}</c-text>
