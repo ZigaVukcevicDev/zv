@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <c-box width="75%">
     <c-button
       size="xs"
       variant="outline"
@@ -33,7 +33,7 @@
         </c-tab-panel>
       </c-tab-panels>
     </c-tabs>
-  </div>
+  </c-box>
 </template>
 
 <script lang="js">
