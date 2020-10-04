@@ -50,10 +50,14 @@
             <c-menu-divider />
             <c-menu-group title="Latest work">
               <c-menu-item v-scroll-to="'#project-1'" padding-left="10">
-                Project 1
+                Petrol
               </c-menu-item>
-              <c-menu-item padding-left="10">Project 2</c-menu-item>
-              <c-menu-item padding-left="10">Project 3</c-menu-item>
+              <c-menu-item v-scroll-to="'#project-2'" padding-left="10"
+                >NFL statistics</c-menu-item
+              >
+              <c-menu-item v-scroll-to="'#project-3'" padding-left="10"
+                >Comtrade website</c-menu-item
+              >
             </c-menu-group>
             <c-menu-divider
               v-if="
@@ -277,90 +281,31 @@
       {{ /* / Stats */ }}
 
       {{ /* My main skills */ }}
-      <c-box width="100%" padding-top="5">
-        <c-heading id="skills-main" as="h2" margin-bottom="5">
-          {{ doc.skills.main.heading }}
-        </c-heading>
-        <c-box
-          width="75%"
-          margin-left="5"
-          v-html="$md.render(doc.skills.main.list)"
-        />
-      </c-box>
-      {{ /* / My main skills */ }}
+      <skills id="skills-main" :content="doc.skills.main" />
 
       {{ /* Latest work - project 1 */ }}
-      <c-box width="75%" padding-top="20" padding-bottom="10">
-        <p>Latest work</p>
-        <c-heading id="project-1" as="h2" margin-bottom="5">
-          {{ doc.latestWorks.project1.title }}
-        </c-heading>
-        <c-box
-          margin-bottom="10"
-          v-html="$md.render(doc.latestWorks.project1.description)"
-        />
-      </c-box>
-    </c-box>
-    {{ /* / Container */ }}
-    <c-box width="100%" padding-bottom="10">
-      <div class="swiper">
-        <swiper ref="swiper" :options="swiperOptions">
-          <swiper-slide>Slide 1</swiper-slide>
-          <swiper-slide>
-            <img :src="require('@/static/img/cat-1.jpg')" alt="" />
-          </swiper-slide>
-          <swiper-slide>Slide 3</swiper-slide>
-          <swiper-slide>Slide 4</swiper-slide>
-          <swiper-slide>Slide 5</swiper-slide>
-          <swiper-slide>Slide 6</swiper-slide>
-          <swiper-slide>Slide 7</swiper-slide>
-          <swiper-slide>Slide 8</swiper-slide>
-          <swiper-slide>Slide 9</swiper-slide>
-          <img
-            slot="pagination"
-            class="iphone-mockup"
-            :src="require('@/assets/images/carousel/iphone-mockup.png')"
-            alt=""
-          />
-          <div slot="pagination" class="swiper-pagination"></div>
-          <div slot="button-prev" class="swiper-button-prev"></div>
-          <div slot="button-next" class="swiper-button-next"></div>
-        </swiper>
-      </div>
-      <c-box
-        margin-top="5"
-        v-html="$md.render(doc.latestWorks.project1.technologies)"
+      <latest-work
+        id="project-1"
+        :content="doc.latestWorks.project1"
+        :swiper="{
+          options: swiperOptions,
+        }"
       />
-      <p>Client {{ doc.latestWorks.project1.client }}</p>
-      {{ /* / Latest work - project 1 */ }}
-    </c-box>
-    {{ /* Container */ }}
-    <c-box padding-left="10" padding-right="10">
-      {{ /* My visual output skills */ }}
-      <c-box width="100%" padding-top="10">
-        <c-heading id="skills-visual-output" as="h2" margin-bottom="5">
-          {{ doc.skills.visualOutput.heading }}
-        </c-heading>
-        <c-box
-          width="75%"
-          margin-left="5"
-          v-html="$md.render(doc.skills.visualOutput.list)"
-        />
-      </c-box>
-      {{ /* / My visual output skills */ }}
 
-      {{ /* My programming logic skills */ }}
-      <c-box width="100%" padding-top="10">
-        <c-heading id="skills-programming-logic" as="h2" margin-bottom="5">
-          {{ doc.skills.programmingLogic.heading }}
-        </c-heading>
-        <c-box
-          width="75%"
-          margin-left="5"
-          v-html="$md.render(doc.skills.programmingLogic.list)"
-        />
-      </c-box>
-      {{ /* / My programming logic skills */ }}
+      {{ /* Skills visual output */ }}
+      <skills id="skills-visual-output" :content="doc.skills.visualOutput" />
+
+      {{ /* Latest work - project 2 */ }}
+      <latest-work id="project-2" :content="doc.latestWorks.project2" />
+
+      {{ /* Skills programming logic */ }}
+      <skills
+        id="skills-programming-logic"
+        :content="doc.skills.programmingLogic"
+      />
+
+      {{ /* Latest work - project 3 */ }}
+      <latest-work id="project-3" :content="doc.latestWorks.project3" />
 
       {{ /* Education */ }}
       <c-box v-show="doc.education.isVisible" width="100%" padding-top="10">
@@ -500,6 +445,8 @@ import {
   CInputLeftElement,
   CTextarea,
 } from '@chakra-ui/vue';
+import Skills from '@/components/Skills'
+import LatestWork from '@/components/LatestWork'
 
 export default {
   name: 'App',
@@ -533,6 +480,8 @@ export default {
     CInputGroup,
     CInputLeftElement,
     CTextarea,
+    LatestWork,
+    Skills,
   },
   async asyncData ({ $content }) {
     const doc = {
@@ -700,61 +649,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.swiper {
-  height: auto;
-  width: 100%;
-  position: relative !important;
-  margin-top: 30px;
-}
-
-.swiper .swiper-container {
-  padding-top: 0;
-  padding-bottom: 100px;
-  position: static !important;
-}
-
-.swiper .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ghostwhite;
-  border-radius: 40px;
-}
-
-.swiper .swiper-slide img {
-  width: 206px;
-}
-
-.swiper .swiper-pagination-bullets {
-  bottom: 0;
-}
-
-.swiper .swiper-pagination-bullet-active {
-  background-color: #000;
-}
-
-.swiper .swiper-button-prev,
-.swiper .swiper-button-next {
-  top: calc(50% - 60px);
-  color: #000;
-}
-
-.swiper .swiper-button-prev {
-  right: auto !important;
-}
-
-.swiper .swiper-button-next {
-  left: auto !important;
-}
-
-.swiper .iphone-mockup {
-  width: 320px;
-  height: 484px;
-  position: absolute;
-  top: calc(50% - 290px);
-  left: calc(50% - 160px);
-  z-index: 1;
-}
-</style>
