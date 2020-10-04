@@ -4,5 +4,17 @@
     "description": "A complete brand new website — there were around 80 templates coded for different subpages. Logic functionalities were made for designated parts of pages (e.g. map of gas locations).\n\nSee it live on [the official page](https://www.petrol.si/).",
     "technologies": "Technologies used:\n\n- html5\n- css3\n- ...",
     "client": "Petrol d.d. and Renderspace d.o.o. / team development"
+  },
+  "project2": {
+    "title": "Widgets showing live NFL statistics",
+    "description": "Numerous widgets made which were implemented by media houses to present live statistics on their websites.",
+    "technologies": "- html5\n- css3\n- ...",
+    "client": "Sportradar d.o.o. / team development"
+  },
+  "project3": {
+    "title": "Comtrade website",
+    "description": "Lorem ipsum",
+    "technologies": "- html5\n- css3\n- ...",
+    "client": "Comtrade CDS d.o.o. / team development"
   }
 }
