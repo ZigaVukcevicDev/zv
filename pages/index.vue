@@ -16,6 +16,15 @@
           :is-disabled="true"
           margin-right="3"
         >
+          Switch to mini page
+        </c-button>
+
+        <c-button
+          size="xs"
+          variant="outline"
+          :is-disabled="true"
+          margin-right="3"
+        >
           Show wireframe
         </c-button>
 
@@ -106,33 +115,12 @@
           </c-pseudo-box>
           <span v-html="doc.about.heading.part2"></span>
         </c-heading>
-        <c-button
-          size="xs"
-          variant="outline"
-          variant-color="black"
-          @click="isVisible.pronunceName = !isVisible.pronunceName"
-        >
-          <span v-show="isVisible.pronunceName">Hide code</span>
-          <span v-show="!isVisible.pronunceName">Show code</span>
-        </c-button>
-        <c-tabs
-          v-show="isVisible.pronunceName"
-          variant="enclosed-colored"
-          align="end"
-        >
-          <c-tab-list>
-            <c-tab>Template</c-tab>
-            <c-tab>Script</c-tab>
-          </c-tab-list>
-          <c-tab-panels>
-            <c-tab-panel>
-              <nuxt-content :document="codeBlocks.pronunceName.template" />
-            </c-tab-panel>
-            <c-tab-panel>
-              <nuxt-content :document="codeBlocks.pronunceName.script" />
-            </c-tab-panel>
-          </c-tab-panels>
-        </c-tabs>
+        <code-blocks
+          :contents="[
+            { id: 'template', panel: codeBlocks.pronunceName.template },
+            { id: 'script', panel: codeBlocks.pronunceName.script },
+          ]"
+        />
         <c-text
           as="p"
           font-size="24px"
@@ -167,48 +155,25 @@
             {{ doc.stats.part2 }}
           </c-stat-label>
         </c-stat>
-        <c-button
-          size="xs"
-          variant="outline"
-          variant-color="black"
-          @click="isVisible.experiencePeriod = !isVisible.experiencePeriod"
-        >
-          <span v-show="isVisible.experiencePeriod">Hide code</span>
-          <span v-show="!isVisible.experiencePeriod">Show code</span>
-        </c-button>
-        <c-tabs
-          v-show="isVisible.experiencePeriod"
-          variant="enclosed-colored"
-          align="end"
-        >
-          <c-tab-list>
-            <c-tab>Template</c-tab>
-            <c-tab>Script</c-tab>
-            <c-tab>CMS integration</c-tab>
-          </c-tab-list>
-          <c-tab-panels>
-            <c-tab-panel>
-              <nuxt-content :document="codeBlocks.experiencePeriod.template" />
-            </c-tab-panel>
-            <c-tab-panel>
-              <nuxt-content :document="codeBlocks.experiencePeriod.script" />
-            </c-tab-panel>
-            <c-tab-panel>
-              <c-text as="p" margin-top="5" margin-bottom="5">
-                Input fields in CMS
-              </c-text>
-              <c-image
-                :src="require('@/assets/images/cms/experience-period.png')"
-                alt="CMS"
-                w="800px"
-              />
-              <c-text as="p" margin-top="5" margin-bottom="5">
-                Configuration
-              </c-text>
-              <nuxt-content :document="codeBlocks.experiencePeriod.cms" />
-            </c-tab-panel>
-          </c-tab-panels>
-        </c-tabs>
+        <code-blocks
+          :contents="[
+            {
+              id: 'template',
+              panel: codeBlocks.experiencePeriod.template,
+            },
+            {
+              id: 'script',
+              panel: codeBlocks.experiencePeriod.script,
+            },
+            {
+              id: 'cms',
+              panel: [
+                require('@/assets/images/cms/experience-period.png'),
+                codeBlocks.experiencePeriod.cms,
+              ],
+            },
+          ]"
+        />
         {{ /* / Experince period */ }}
         {{ /* Number of coffee cups drank */ }}
         <c-stat v-show="numberOfCoffeeCupsDrank > 0">
@@ -224,64 +189,47 @@
             </span>
           </c-stat-label>
         </c-stat>
-        <c-button
-          size="xs"
-          variant="outline"
-          variant-color="black"
-          @click="
-            isVisible.numberOfCoffeeCupsDrank = !isVisible.numberOfCoffeeCupsDrank
-          "
-        >
-          <span v-show="isVisible.numberOfCoffeeCupsDrank">Hide code</span>
-          <span v-show="!isVisible.numberOfCoffeeCupsDrank">Show code</span>
-        </c-button>
-        <c-tabs
-          v-show="isVisible.numberOfCoffeeCupsDrank"
-          variant="enclosed-colored"
-          align="end"
-        >
-          <c-tab-list>
-            <c-tab>Template</c-tab>
-            <c-tab>Script</c-tab>
-            <c-tab>CMS integration</c-tab>
-          </c-tab-list>
-          <c-tab-panels>
-            <c-tab-panel>
-              <nuxt-content
-                :document="codeBlocks.numberOfCoffeeCupsDrank.template"
-              />
-            </c-tab-panel>
-            <c-tab-panel>
-              <nuxt-content
-                :document="codeBlocks.numberOfCoffeeCupsDrank.script"
-              />
-            </c-tab-panel>
-            <c-tab-panel>
-              <c-text as="p" margin-top="5" margin-bottom="5">
-                Input fields in CMS
-              </c-text>
-              <c-image
-                :src="
-                  require('@/assets/images/cms/number-of-coffee-cups-drank.png')
-                "
-                alt="CMS"
-                w="800px"
-              />
-              <c-text as="p" margin-top="5" margin-bottom="5">
-                Configuration
-              </c-text>
-              <nuxt-content
-                :document="codeBlocks.numberOfCoffeeCupsDrank.cms"
-              />
-            </c-tab-panel>
-          </c-tab-panels>
-        </c-tabs>
+        <code-blocks
+          :contents="[
+            {
+              id: 'template',
+              panel: codeBlocks.numberOfCoffeeCupsDrank.template,
+            },
+            {
+              id: 'script',
+              panel: codeBlocks.numberOfCoffeeCupsDrank.script,
+            },
+            {
+              id: 'cms',
+              panel: [
+                require('@/assets/images/cms/number-of-coffee-cups-drank.png'),
+                codeBlocks.numberOfCoffeeCupsDrank.cms,
+              ],
+            },
+          ]"
+        />
         {{ /* / Number of coffee cups drank */ }}
       </c-box>
       {{ /* / Stats */ }}
 
       {{ /* My main skills */ }}
       <skills id="skills-main" :content="doc.skills.main" />
+      <code-blocks
+        :contents="[
+          {
+            id: 'template',
+            panel: codeBlocks.skills.main.template,
+          },
+          {
+            id: 'cms',
+            panel: [
+              require('@/assets/images/cms/skills-main.png'),
+              codeBlocks.skills.main.cms,
+            ],
+          },
+        ]"
+      />
+      {{ /* / My main skills */ }}
 
       {{ /* Latest work - project 1 */ }}
       <latest-work
@@ -423,12 +371,6 @@ import {
   CText,
   CLink,
   CIcon,
-  CTabs,
-  CTabList,
-  CTabPanels,
-  CTab,
-  CTabPanel,
-  CImage,
   CMenu,
   CMenuButton,
   CMenuList,
@@ -443,8 +385,9 @@ import {
   CInputLeftElement,
   CTextarea,
 } from '@chakra-ui/vue';
-import Skills from '@/components/Skills'
-import LatestWork from '@/components/LatestWork'
+import Skills from '@/components/Skills';
+import LatestWork from '@/components/LatestWork';
+import CodeBlocks from '@/components/CodeBlocks';
 
 export default {
   name: 'App',
@@ -459,12 +402,6 @@ export default {
     CText,
     CLink,
     CIcon,
-    CTabs,
-    CTabList,
-    CTabPanels,
-    CTab,
-    CTabPanel,
-    CImage,
     CMenu,
     CMenuButton,
     CMenuList,
@@ -480,6 +417,7 @@ export default {
     CTextarea,
     LatestWork,
     Skills,
+    CodeBlocks,
   },
   async asyncData ({ $content }) {
     const doc = {
@@ -500,12 +438,18 @@ export default {
       experiencePeriod: {
         template: await $content('code-blocks/experience-period/template').fetch(),
         script: await $content('code-blocks/experience-period/script').fetch(),
-        cms: await $content('code-blocks/experience-period/cms-integration').fetch(),
+        cms: await $content('code-blocks/experience-period/cms').fetch(),
       },
       numberOfCoffeeCupsDrank: {
         template: await $content('code-blocks/number-of-coffee-cups-drank/template').fetch(),
         script: await $content('code-blocks/number-of-coffee-cups-drank/script').fetch(),
-        cms: await $content('code-blocks/number-of-coffee-cups-drank/cms-integration').fetch(),
+        cms: await $content('code-blocks/number-of-coffee-cups-drank/cms').fetch(),
+      },
+      skills: {
+        main: {
+          template: await $content('code-blocks/skills/main/template').fetch(),
+          cms: await $content('code-blocks/skills/main/cms').fetch(),
+        }
       }
     }
 

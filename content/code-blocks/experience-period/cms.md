@@ -1,3 +1,14 @@
+```js
+async asyncData ({ $content }) {
+  const doc = {
+    stats: await $content('statistics').fetch(),
+    ...
+  }
+
+  return { doc }
+},
+```
+
 ```yaml
 - name: 'Statistics'
   label: 'Statistics'
