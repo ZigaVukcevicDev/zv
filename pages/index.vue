@@ -287,9 +287,7 @@
       <latest-work
         id="project-1"
         :content="doc.latestWorks.project1"
-        :swiper="{
-          options: swiperOptions,
-        }"
+        :has-swiper="true"
       />
 
       {{ /* Skills visual output */ }}
@@ -533,36 +531,6 @@ export default {
         numberOfCoffeeCupsDrank: false,
         pronunceName: false,
       },
-      swiperOptions: {
-        loop: false,
-        slidesPerView: 3,
-        spaceBetween: 140,
-        breakpoints: {
-          // when window width is >= 320px
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 10
-          },
-          // when window width is >= 480px
-          // 480: {
-          //   slidesPerView: 3,
-          //   spaceBetween: 30
-          // },
-          // when window width is >= 640px
-          // 640: {
-          //   slidesPerView: 4,
-          //   spaceBetween: 40
-          // }
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      }
     }
   },
   computed: {

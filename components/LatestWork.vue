@@ -7,9 +7,9 @@
       </c-heading>
       <c-box margin-bottom="20" v-html="$md.render(content.description)" />
     </c-box>
-    <c-box v-if="Object.keys(swiper).length" width="75%" margin-top="10">
+    <c-box v-if="hasSwiper" width="75%" margin-top="10">
       <div class="swiper">
-        <swiper ref="swiper" :options="swiper.options">
+        <swiper ref="swiper" :options="swiperOptions">
           <swiper-slide>Slide 1</swiper-slide>
           <swiper-slide>
             <img :src="require('@/static/img/cat-1.jpg')" alt="" />
@@ -63,10 +63,44 @@ export default {
       type: Object,
       default: () => ({}),
     },
-    swiper: {
-      type: Object,
-      default: () => ({}),
+    hasSwiper: {
+      type: Boolean,
+      default: false,
     },
+  },
+  data () {
+    return {
+      swiperOptions: {
+        loop: false,
+        slidesPerView: 3,
+        spaceBetween: 140,
+        breakpoints: {
+          // when window width is >= 320px
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10
+          },
+          // when window width is >= 480px
+          // 480: {
+          //   slidesPerView: 3,
+          //   spaceBetween: 30
+          // },
+          // when window width is >= 640px
+          // 640: {
+          //   slidesPerView: 4,
+          //   spaceBetween: 40
+          // }
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      }
+    }
   },
 }
 </script>
