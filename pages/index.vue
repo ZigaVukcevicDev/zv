@@ -4,7 +4,7 @@
     <c-box padding-left="10" padding-right="10">
       {{ /* Draft notice */ }}
       <c-box background-color="tomato" width="100%" padding="4" color="white">
-        This is a page draft.
+        123 This is a page draft.
       </c-box>
       {{ /* / Draft notice */ }}
 
