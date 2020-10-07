@@ -4,7 +4,7 @@
     <c-box padding-left="10" padding-right="10">
       {{ /* Draft notice */ }}
       <c-box background-color="tomato" width="100%" padding="4" color="white">
-        123 This is a page draft.
+        This is a page draft.
       </c-box>
       {{ /* / Draft notice */ }}
 
@@ -280,69 +280,7 @@
       {{ /* / Certificates and conferences */ }}
 
       {{ /* Contact */ }}
-      <c-box width="50%" padding-top="10">
-        <c-heading id="contact" as="h2" margin-bottom="5">
-          Contact me
-        </c-heading>
-        <c-text margin-bottom="5">{{ doc.contact.text1 }}</c-text>
-        <form name="form-contact" netlify>
-          <c-stack spacing="4">
-            <c-input-group>
-              <c-input-left-element>
-                <c-icon name="user" />
-              </c-input-left-element>
-              <c-input
-                name="nameFull"
-                type="text"
-                placeholder="Your full name"
-              />
-            </c-input-group>
-            <c-input-group>
-              <c-input-left-element>
-                <c-icon name="at" />
-              </c-input-left-element>
-              <c-input
-                name="emailAddress"
-                type="email"
-                placeholder="Your email address"
-              />
-            </c-input-group>
-            <c-textarea placeholder="Your message ..." />
-
-            <c-button>Send message</c-button>
-          </c-stack>
-          <!-- <p>
-            <label>Your full name <input type="text" name="full-name" /></label>
-          </p>
-          <p>
-            <label
-              >Your email address <input type="email" name="email"
-            /></label>
-          </p>
-          <p>
-            <label>Your message <textarea name="message"></textarea></label>
-          </p>
-          <p>
-            <button type="submit">Send message</button>
-          </p> -->
-        </form>
-        <c-text margin-top="5" margin-bottom="5">
-          {{ doc.contact.text2 }}
-        </c-text>
-        <c-box>
-          <c-link :href="doc.contact.link1.href" is-external>
-            <c-icon :name="doc.contact.link1.icon" margin-left="2px" />
-            {{ doc.contact.link1.text }}
-          </c-link>
-        </c-box>
-        <c-box>
-          <c-link :href="doc.contact.link2.href" is-external>
-            <c-icon :name="doc.contact.link2.icon" margin-left="2px" />
-            {{ doc.contact.link2.text }}
-          </c-link>
-        </c-box>
-      </c-box>
-      {{ /* / Contact */ }}
+      <contact id="contact" :content="doc.contact" />
 
       {{ /* Footer */ }}
       <c-box width="100%" padding-top="10" padding-bottom="10" margin-top="20">
@@ -379,14 +317,10 @@ import {
   CMenuDivider,
   CPseudoBox,
   CIconButton,
-  CStack,
-  CInput,
-  CInputGroup,
-  CInputLeftElement,
-  CTextarea,
 } from '@chakra-ui/vue';
 import Skills from '@/components/Skills';
 import LatestWork from '@/components/LatestWork';
+import Contact from '@/components/Contact';
 import CodeBlocks from '@/components/CodeBlocks';
 
 export default {
@@ -410,14 +344,10 @@ export default {
     CMenuDivider,
     CPseudoBox,
     CIconButton,
-    CStack,
-    CInput,
-    CInputGroup,
-    CInputLeftElement,
-    CTextarea,
     LatestWork,
     Skills,
     CodeBlocks,
+    Contact,
   },
   async asyncData ({ $content }) {
     const doc = {
