@@ -4,23 +4,24 @@
     <c-text margin-bottom="5">{{ content.text1 }}</c-text>
     <form name="form-contact" netlify>
       <c-box margin-bottom="3">
-        <c-form-control is-required is-invalid>
+        <c-form-control is-required :is-invalid="!isValid.nameFull">
           <c-form-label for="nameFull">Your full name</c-form-label>
-          <c-input id="nameFull" type="text" @blur="handleInputChange" />
+          <c-input id="nameFull" type="text" @blur="handleInputBlur" />
         </c-form-control>
       </c-box>
       <c-box margin-bottom="3">
-        <c-form-control is-required>
+        <c-form-control is-required :is-invalid="!isValid.emailAddress">
           <c-form-label for="emailAddress">Your email address</c-form-label>
-          <c-input id="emailAddress" type="email" @blur="handleInputChange" />
+          <c-input id="emailAddress" type="email" @blur="handleInputBlur" />
         </c-form-control>
       </c-box>
       <c-box margin-bottom="3">
-        <c-form-control is-required>
-          <c-form-label for="emailAddress">Your message</c-form-label>
+        <c-form-control is-required :is-invalid="!isValid.message">
+          <c-form-label for="message">Your message</c-form-label>
           <c-textarea
+            id="message"
             placeholder="Your message ..."
-            @blur="handleTextAreaChange"
+            @change="handleTextAreaChange"
           />
         </c-form-control>
       </c-box>
@@ -83,13 +84,22 @@ export default {
     },
   },
   data () {
-    return {}
+    return {
+      isValid: {
+        nameFull: true,
+        emailAddress: true,
+        message: true,
+      }
+    }
   },
   methods: {
-    handleInputChange () {
+    handleInputBlur () {
+      this.isValid.nameFull = false;
+      this.isValid.emailAddress = false;
       console.log(event.target.value);
     },
     handleTextAreaChange () {
+      this.isValid.message = false;
       console.log(event.target.value);
     }
   },
