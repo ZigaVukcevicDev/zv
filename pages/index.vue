@@ -72,25 +72,25 @@
               >
             </c-menu-group>
             <c-menu-divider
-              v-if="
+              v-show="
                 doc.education.isVisible ||
                 doc.certificatesAndConferences.isVisible
               "
             />
             <c-menu-group
-              v-if="
+              v-show="
                 doc.education.isVisible ||
                 doc.certificatesAndConferences.isVisible
               "
             >
               <c-menu-item
-                v-if="doc.education.isVisible"
+                v-show="doc.education.isVisible"
                 v-scroll-to="'#education'"
               >
                 Education
               </c-menu-item>
               <c-menu-item
-                v-if="doc.certificatesAndConferences.isVisible"
+                v-show="doc.certificatesAndConferences.isVisible"
                 v-scroll-to="'#certificates-and-conferences'"
               >
                 Certificates and conferences
