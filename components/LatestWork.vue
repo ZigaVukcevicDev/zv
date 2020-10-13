@@ -12,7 +12,10 @@
         <swiper ref="swiper" :options="swiperOptions">
           <swiper-slide>Slide 1</swiper-slide>
           <swiper-slide>
-            <img :src="require('@/static/img/cat-1.jpg')" alt="" />
+            <c-image
+              :src="require('@/static/img/cat-1.jpg')"
+              alt="Some image"
+            />
           </swiper-slide>
           <swiper-slide>Slide 3</swiper-slide>
           <swiper-slide>Slide 4</swiper-slide>
@@ -46,6 +49,7 @@
 import {
   CBox,
   CHeading,
+  CImage,
 } from '@chakra-ui/vue';
 
 export default {
@@ -53,6 +57,7 @@ export default {
   components: {
     CBox,
     CHeading,
+    CImage,
   },
   props: {
     content: {
