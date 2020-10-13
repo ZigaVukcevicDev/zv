@@ -2,7 +2,7 @@
   <div>
     <c-box width="75%" margin-top="10">
       <p>Latest work</p>
-      <c-heading :id="id" as="h2" margin-bottom="5">
+      <c-heading as="h2" margin-bottom="5">
         {{ content.title }}
       </c-heading>
       <c-box margin-bottom="20" v-html="$md.render(content.description)" />
@@ -55,10 +55,6 @@ export default {
     CHeading,
   },
   props: {
-    id: {
-      type: String,
-      default: null,
-    },
     content: {
       type: Object,
       default: () => ({}),

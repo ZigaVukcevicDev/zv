@@ -8,7 +8,10 @@
       </c-box>
       {{ /* / Draft notice */ }}
 
-      {{ /* Menu */ }}
+      {{ /* Side navigation */ }}
+      <navigation-side :items="navigationItems" />
+
+      {{ /* Main navigation */ }}
       <c-box display="flex" width="100%" justify-content="flex-end">
         <c-button
           size="xs"
@@ -98,7 +101,7 @@
           </c-menu-list>
         </c-menu>
       </c-box>
-      {{ /* / Menu */ }}
+      {{ /* / Main navigation */ }}
 
       {{ /* About */ }}
       <c-box width="100%">
@@ -213,7 +216,15 @@
       {{ /* / Stats */ }}
 
       {{ /* My main skills */ }}
-      <skills id="skills-main" :content="doc.skills.main" />
+      <skills
+        id="skills-main"
+        v-waypoint="{
+          active: true,
+          callback: onWaypoint,
+          options: intersectionOptions,
+        }"
+        :content="doc.skills.main"
+      />
       <code-blocks
         :contents="[
           {
@@ -234,28 +245,72 @@
       {{ /* Latest work - project 1 */ }}
       <latest-work
         id="project-1"
+        v-waypoint="{
+          active: true,
+          callback: onWaypoint,
+          options: intersectionOptions,
+        }"
         :content="doc.latestWorks.project1"
         :has-swiper="true"
       />
 
       {{ /* Skills visual output */ }}
-      <skills id="skills-visual-output" :content="doc.skills.visualOutput" />
+      <skills
+        id="skills-visual-output"
+        v-waypoint="{
+          active: true,
+          callback: onWaypoint,
+          options: intersectionOptions,
+        }"
+        :content="doc.skills.visualOutput"
+      />
 
       {{ /* Latest work - project 2 */ }}
-      <latest-work id="project-2" :content="doc.latestWorks.project2" />
+      <latest-work
+        id="project-2"
+        v-waypoint="{
+          active: true,
+          callback: onWaypoint,
+          options: intersectionOptions,
+        }"
+        :content="doc.latestWorks.project2"
+      />
 
       {{ /* Skills programming logic */ }}
       <skills
         id="skills-programming-logic"
+        v-waypoint="{
+          active: true,
+          callback: onWaypoint,
+          options: intersectionOptions,
+        }"
         :content="doc.skills.programmingLogic"
       />
 
       {{ /* Latest work - project 3 */ }}
-      <latest-work id="project-3" :content="doc.latestWorks.project3" />
+      <latest-work
+        id="project-3"
+        v-waypoint="{
+          active: true,
+          callback: onWaypoint,
+          options: intersectionOptions,
+        }"
+        :content="doc.latestWorks.project3"
+      />
 
       {{ /* Education */ }}
-      <c-box v-show="doc.education.isVisible" width="100%" padding-top="10">
-        <c-heading id="education" as="h2" margin-bottom="5">
+      <c-box
+        v-show="doc.education.isVisible"
+        id="education"
+        v-waypoint="{
+          active: true,
+          callback: onWaypoint,
+          options: intersectionOptions,
+        }"
+        width="100%"
+        padding-top="10"
+      >
+        <c-heading as="h2" margin-bottom="5">
           {{ doc.education.heading }}
         </c-heading>
         <c-box width="75%" v-html="$md.render(doc.education.richText)" />
@@ -265,10 +320,16 @@
       {{ /* Certificates and conferences */ }}
       <c-box
         v-show="doc.certificatesAndConferences.isVisible"
+        id="certificates-and-conferences"
+        v-waypoint="{
+          active: true,
+          callback: onWaypoint,
+          options: intersectionOptions,
+        }"
         width="100%"
         padding-top="10"
       >
-        <c-heading id="certificates-and-conferences" as="h2" margin-bottom="5">
+        <c-heading as="h2" margin-bottom="5">
           {{ doc.certificatesAndConferences.heading }}
         </c-heading>
         <c-box
@@ -280,7 +341,15 @@
       {{ /* / Certificates and conferences */ }}
 
       {{ /* Contact */ }}
-      <contact id="contact" :content="doc.contact" />
+      <contact
+        id="contact"
+        v-waypoint="{
+          active: true,
+          callback: onWaypoint,
+          options: intersectionOptions,
+        }"
+        :content="doc.contact"
+      />
 
       {{ /* Footer */ }}
       <c-box width="100%" padding-top="10" padding-bottom="10" margin-top="20">
@@ -291,9 +360,8 @@
           Website last generated {{ currentTimeStamp() }}.
         </c-text>
       </c-box>
-
-      <br />
-      <pre>{{ doc }}</pre>
+      <!-- <br />
+      <pre>{{ doc }}</pre> -->
     </c-box>
   </c-box>
 </template>
@@ -318,6 +386,7 @@ import {
   CPseudoBox,
   CIconButton,
 } from '@chakra-ui/vue';
+import NavigationSide from '@/components/NavigationSide';
 import Skills from '@/components/Skills';
 import LatestWork from '@/components/LatestWork';
 import Contact from '@/components/Contact';
@@ -344,6 +413,7 @@ export default {
     CMenuDivider,
     CPseudoBox,
     CIconButton,
+    NavigationSide,
     LatestWork,
     Skills,
     CodeBlocks,
@@ -400,11 +470,63 @@ export default {
           color: 'gray.900'
         }
       },
+      navigationItems: [
+        {
+          id: 'skills-main',
+          text: 'Skills / Main skills',
+          isVisibleInNavigationSide: false,
+        },
+        {
+          id: 'skills-visual-output',
+          text: 'Skills / To produce visual output',
+          isVisibleInNavigationSide: false,
+        },
+        {
+          id: 'skills-programming-logic',
+          text: 'Skills / To work with programming logic',
+          isVisibleInNavigationSide: false,
+        },
+        {
+          id: 'project-1',
+          text: 'Latest work / Petrol',
+          isVisibleInNavigationSide: false,
+        },
+        {
+          id: 'project-2',
+          text: 'Latest work / NFL statistics',
+          isVisibleInNavigationSide: false,
+        },
+        {
+          id: 'project-3',
+          text: 'Latest work / Comtrade website',
+          isVisibleInNavigationSide: false,
+        },
+        {
+          id: 'education',
+          text: 'Education',
+          isVisibleInNavigationSide: false,
+        },
+        {
+          id: 'certificates-and-conferences',
+          text: 'Certificates and conferences',
+          isVisibleInNavigationSide: false,
+        },
+        {
+          id: 'contact',
+          text: 'Contact me',
+          isVisibleInNavigationSide: false,
+        },
+      ],
       isVisible: {
         experiencePeriod: false,
         numberOfCoffeeCupsDrank: false,
         pronunceName: false,
       },
+      intersectionOptions: {
+        root: null,
+        rootMargin: '0px 0px 0px 0px',
+        threshold: [0, 1] // [0.25, 0.75] if you want a 25% offset!
+      }
     }
   },
   computed: {
@@ -482,6 +604,30 @@ export default {
         : `${day}.${month}.${year} at ${hours}:${minutes}`;
 
       return timeStamp;
+    },
+    onWaypoint ({ el, going, direction }) {
+      // going: in, out
+      // direction: top, right, bottom, left
+
+      console.log(el.id);
+      this.toggleNavigationSideItems(el.id);
+
+      if (going === this.$waypointMap.GOING_IN) {
+        console.log('waypoint going in!')
+      }
+
+      if (direction === this.$waypointMap.DIRECTION_TOP) {
+        console.log('waypoint going top!')
+      }
+    },
+    toggleNavigationSideItems (id) {
+      this.navigationItems.forEach(item => {
+        if (item.id === id) {
+          item.isVisibleInNavigationSide = true;
+        } else {
+          item.isVisibleInNavigationSide = false;
+        }
+      });
     },
   },
   head() {

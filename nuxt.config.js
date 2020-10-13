@@ -29,6 +29,7 @@ export default {
   plugins: [
     { src: '@/plugins/vue-awesome-swiper.js' },
     { src: '@/plugins/vue-scroll-to.js', mode: 'client' },
+    { src: '@/plugins/vue-waypoint.js', mode: 'client' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

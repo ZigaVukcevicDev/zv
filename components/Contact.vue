@@ -1,6 +1,6 @@
 <template>
   <c-box width="50%" padding-top="10">
-    <c-heading :id="id" as="h2" margin-bottom="5">Contact me</c-heading>
+    <c-heading as="h2" margin-bottom="5">Contact me</c-heading>
     <c-text margin-bottom="5">{{ content.text1 }}</c-text>
     <form name="form-contact" netlify>
       <c-box margin-bottom="3">
@@ -74,10 +74,6 @@ export default {
     CFormLabel,
   },
   props: {
-    id: {
-      type: String,
-      default: null,
-    },
     content: {
       type: Object,
       default: () => ({}),
