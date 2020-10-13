@@ -7,7 +7,7 @@
       </c-heading>
       <c-box margin-bottom="20" v-html="$md.render(content.description)" />
     </c-box>
-    <c-box v-if="hasSwiper" width="75%" margin-top="10">
+    <c-box v-show="hasSwiper" width="75%" margin-top="10">
       <div class="swiper">
         <swiper ref="swiper" :options="swiperOptions">
           <swiper-slide>Slide 1</swiper-slide>

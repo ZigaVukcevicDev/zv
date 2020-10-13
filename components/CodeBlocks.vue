@@ -18,7 +18,7 @@
       <c-tab-panels>
         <c-tab-panel v-for="content in contents" :key="content.id">
           <c-box margin-top="5">
-            <div v-if="content.id === 'cms'">
+            <div v-show="content.id === 'cms'">
               <c-text as="p" margin-bottom="5">Input fields in CMS</c-text>
               <c-image :src="content.panel[0]" alt="CMS" w="800px" />
               <c-text as="p" margin-top="5" margin-bottom="5"
@@ -26,7 +26,7 @@
               </c-text>
               <nuxt-content :document="content.panel[1]" />
             </div>
-            <div v-else>
+            <div v-show="content.id !== 'cms'">
               <nuxt-content :document="content.panel" />
             </div>
           </c-box>
