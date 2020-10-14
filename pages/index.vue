@@ -171,7 +171,7 @@
             {
               id: 'cms',
               panel: [
-                require('@/assets/images/cms/experience-period.png'),
+                '@/assets/images/cms/experience-period.png',
                 codeBlocks.experiencePeriod.cms,
               ],
             },

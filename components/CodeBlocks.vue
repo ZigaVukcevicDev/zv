@@ -20,7 +20,7 @@
           <c-box margin-top="5">
             <div v-show="content.id === 'cms'">
               <c-text as="p" margin-bottom="5">Input fields in CMS</c-text>
-              <c-image :src="content.panel[0]" alt="CMS" w="800px" />
+              <c-image :src="require(content.panel[0])" alt="CMS" w="800px" />
               <c-text as="p" margin-top="5" margin-bottom="5"
                 >Script and configuration
               </c-text>
