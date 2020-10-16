@@ -18,17 +18,19 @@
       <c-tab-panels>
         <c-tab-panel v-for="content in contents" :key="content.id">
           <c-box margin-top="5">
-            <div v-show="content.id === 'cms'">
-              <c-text as="p" margin-bottom="5">Input fields in CMS</c-text>
-              <c-image v-if="content.panel[0]" :src="content.panel[0]" />
-              <c-text as="p" margin-top="5" margin-bottom="5"
-                >Script and configuration
-              </c-text>
-              <nuxt-content :document="content.panel[1]" />
-            </div>
-            <div v-show="content.id !== 'cms'">
-              <nuxt-content :document="content.panel" />
-            </div>
+            <client-only>
+              <div v-if="content.id === 'cms'">
+                <c-text as="p" margin-bottom="5">Input fields in CMS</c-text>
+                <c-image v-if="content.panel[0]" :src="content.panel[0]" />
+                <c-text as="p" margin-top="5" margin-bottom="5"
+                  >Script and configuration
+                </c-text>
+                <nuxt-content :document="content.panel[1]" />
+              </div>
+              <div v-if="content.id !== 'cms'">
+                <nuxt-content :document="content.panel" />
+              </div>
+            </client-only>
           </c-box>
         </c-tab-panel>
       </c-tab-panels>
@@ -48,6 +50,7 @@ import {
   CText,
   CBox,
 } from '@chakra-ui/vue';
+// import ClientOnly from 'vue-client-only'
 
 export default {
   name: 'CodeBlocks',
@@ -60,7 +63,8 @@ export default {
     CTabPanels,
     CImage,
     CText,
-    CBox
+    CBox,
+//    ClientOnly,
   },
   props: {
     contents: {
