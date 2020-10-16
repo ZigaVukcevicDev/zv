@@ -18,15 +18,15 @@
       <c-tab-panels>
         <c-tab-panel v-for="content in contents" :key="content.id">
           <c-box margin-top="5">
-            <div v-if="content.id === 'cms'">
+            <div v-show="content.id === 'cms'">
               <c-text as="p" margin-bottom="5">Input fields in CMS</c-text>
-              <c-image :src="images[content.panel[0]]" />
+              <c-image v-if="content.panel[0]" :src="content.panel[0]" />
               <c-text as="p" margin-top="5" margin-bottom="5"
                 >Script and configuration
               </c-text>
               <nuxt-content :document="content.panel[1]" />
             </div>
-            <div v-if="content.id !== 'cms'">
+            <div v-show="content.id !== 'cms'">
               <nuxt-content :document="content.panel" />
             </div>
           </c-box>
@@ -48,9 +48,6 @@ import {
   CText,
   CBox,
 } from '@chakra-ui/vue';
-import cmsImageExperiencePeriod from '@/assets/images/cms/experience-period.png';
-import cmsImageNumberOfCoffeeCupsDrank from '@/assets/images/cms/number-of-coffee-cups-drank.png';
-import cmsImageSkillsMain from '@/assets/images/cms/skills-main.png';
 
 export default {
   name: 'CodeBlocks',
@@ -83,18 +80,7 @@ export default {
         script: 'Script',
         cms: 'CMS integration',
       },
-      images: {
-        cmsImageExperiencePeriod,
-        cmsImageNumberOfCoffeeCupsDrank,
-        cmsImageSkillsMain,
-      }
     }
   },
-  methods: {
-    requireImage(image) {
-      // NOTE: this method is used to overcome issue
-      return require(`@/assets/${image}`);
-    }
-  }
 }
 </script>

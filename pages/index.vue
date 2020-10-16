@@ -171,7 +171,7 @@
             {
               id: 'cms',
               panel: [
-                'cmsImageExperiencePeriod',
+                cmsImages.cmsImageExperiencePeriod,
                 codeBlocks.experiencePeriod.cms,
               ],
             },
@@ -205,7 +205,7 @@
             {
               id: 'cms',
               panel: [
-                'cmsImageNumberOfCoffeeCupsDrank',
+                cmsImages.cmsImageNumberOfCoffeeCupsDrank,
                 codeBlocks.numberOfCoffeeCupsDrank.cms,
               ],
             },
@@ -233,7 +233,7 @@
           },
           {
             id: 'cms',
-            panel: ['cmsImageSkillsMain', codeBlocks.skills.main.cms],
+            panel: [cmsImages.cmsImageSkillsMain, codeBlocks.skills.main.cms],
           },
         ]"
       />
@@ -388,6 +388,9 @@ import Skills from '@/components/Skills';
 import LatestWork from '@/components/LatestWork';
 import Contact from '@/components/Contact';
 import CodeBlocks from '@/components/CodeBlocks';
+import cmsImageExperiencePeriod from '@/assets/images/cms/experience-period.png';
+import cmsImageNumberOfCoffeeCupsDrank from '@/assets/images/cms/number-of-coffee-cups-drank.png';
+import cmsImageSkillsMain from '@/assets/images/cms/skills-main.png';
 
 export default {
   name: 'App',
@@ -523,6 +526,11 @@ export default {
         root: null,
         rootMargin: '0px 0px 0px 0px',
         threshold: [0, 1] // [0.25, 0.75] if you want a 25% offset!
+      },
+      cmsImages: {
+        cmsImageExperiencePeriod,
+        cmsImageNumberOfCoffeeCupsDrank,
+        cmsImageSkillsMain,
       }
     }
   },
