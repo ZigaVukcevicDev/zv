@@ -171,7 +171,7 @@
             {
               id: 'cms',
               panel: [
-                'images/cms/experience-period.png',
+                'cmsImageExperiencePeriod',
                 codeBlocks.experiencePeriod.cms,
               ],
             },
@@ -205,7 +205,7 @@
             {
               id: 'cms',
               panel: [
-                'images/cms/number-of-coffee-cups-drank.png',
+                'cmsImageNumberOfCoffeeCupsDrank',
                 codeBlocks.numberOfCoffeeCupsDrank.cms,
               ],
             },
@@ -233,7 +233,7 @@
           },
           {
             id: 'cms',
-            panel: ['images/cms/skills-main.png', codeBlocks.skills.main.cms],
+            panel: ['cmsImageSkillsMain', codeBlocks.skills.main.cms],
           },
         ]"
       />
