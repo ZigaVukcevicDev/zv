@@ -171,7 +171,7 @@
             {
               id: 'cms',
               panel: [
-                '@/assets/images/cms/experience-period.png',
+                'images/cms/experience-period.png',
                 codeBlocks.experiencePeriod.cms,
               ],
             },
@@ -205,7 +205,7 @@
             {
               id: 'cms',
               panel: [
-                require('@/assets/images/cms/number-of-coffee-cups-drank.png'),
+                'images/cms/number-of-coffee-cups-drank.png',
                 codeBlocks.numberOfCoffeeCupsDrank.cms,
               ],
             },
@@ -233,10 +233,7 @@
           },
           {
             id: 'cms',
-            panel: [
-              require('@/assets/images/cms/skills-main.png'),
-              codeBlocks.skills.main.cms,
-            ],
+            panel: ['images/cms/skills-main.png', codeBlocks.skills.main.cms],
           },
         ]"
       />
@@ -609,15 +606,15 @@ export default {
       // going: in, out
       // direction: top, right, bottom, left
 
-      console.log(el.id);
+      // console.log(el.id);
       this.toggleNavigationSideItems(el.id);
 
       if (going === this.$waypointMap.GOING_IN) {
-        console.log('waypoint going in!')
+        // console.log('waypoint going in!')
       }
 
       if (direction === this.$waypointMap.DIRECTION_TOP) {
-        console.log('waypoint going top!')
+        // console.log('waypoint going top!')
       }
     },
     toggleNavigationSideItems (id) {

@@ -92,11 +92,11 @@ export default {
     handleInputBlur () {
       this.isValid.nameFull = false;
       this.isValid.emailAddress = false;
-      console.log(event.target.value);
+      // console.log(event.target.value);
     },
     handleTextAreaChange () {
       this.isValid.message = false;
-      console.log(event.target.value);
+      // console.log(event.target.value);
     }
   },
 }

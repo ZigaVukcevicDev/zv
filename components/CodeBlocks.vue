@@ -18,15 +18,15 @@
       <c-tab-panels>
         <c-tab-panel v-for="content in contents" :key="content.id">
           <c-box margin-top="5">
-            <div v-show="content.id === 'cms'">
+            <div v-if="content.id === 'cms'">
               <c-text as="p" margin-bottom="5">Input fields in CMS</c-text>
-              <!-- <c-image :src="require(content.panel[0])" alt="CMS" w="800px" /> -->
+              <c-image :src="requireImage(content.panel[0])" />
               <c-text as="p" margin-top="5" margin-bottom="5"
                 >Script and configuration
               </c-text>
               <nuxt-content :document="content.panel[1]" />
             </div>
-            <div v-show="content.id !== 'cms'">
+            <div v-if="content.id !== 'cms'">
               <nuxt-content :document="content.panel" />
             </div>
           </c-box>
@@ -67,6 +67,10 @@ export default {
       type: Array,
       default: () => ([]),
     },
+    image: {
+      type: String,
+      default: 'test'
+    }
   },
   data () {
     return {
@@ -78,5 +82,10 @@ export default {
       }
     }
   },
+  methods: {
+    requireImage(image) {
+      return require(`@/assets/${image}`);
+    }
+  }
 }
 </script>
