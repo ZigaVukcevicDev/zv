@@ -1,5 +1,5 @@
 <template>
-  <c-box width="75%">
+  <c-box width="76%">
     <c-button
       size="xs"
       variant="outline"
