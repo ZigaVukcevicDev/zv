@@ -16,7 +16,6 @@
       {{ /* Side navigation */ }}
       -->
       <navigation-side :items="navigationItems" />
-      <!--
       {{ /* Main navigation */ }}
       <c-box display="flex" width="100%" justify-content="flex-end">
         <c-button
@@ -108,7 +107,7 @@
         </c-menu>
       </c-box>
       {{ /* / Main navigation */ }}
-
+      <!--
       {{ /* About */ }}
       <c-box width="100%">
         <c-heading as="h1">
