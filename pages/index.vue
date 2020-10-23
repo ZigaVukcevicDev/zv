@@ -294,7 +294,6 @@
         :content="doc.latestWorks.project3"
       />
 
-      <!--
       {{ /* Education */ }}
       <c-box
         v-show="doc.education.isVisible"
@@ -337,6 +336,7 @@
       </c-box>
       {{ /* / Certificates and conferences */ }}
 
+      <!--
       {{ /* Contact */ }}
       <contact
         id="contact"
