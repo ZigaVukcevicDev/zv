@@ -236,7 +236,6 @@
           },
         ]"
       />
-      <!--
       {{ /* / My main skills */ }}
 
       {{ /* Latest work - project 1 */ }}
@@ -250,7 +249,6 @@
         :content="doc.latestWorks.project1"
         :has-swiper="true"
       />
-      -->
 
       {{ /* Skills visual output */ }}
       <skills
@@ -263,7 +261,6 @@
         :content="doc.skills.visualOutput"
       />
 
-      <!--
       {{ /* Latest work - project 2 */ }}
       <latest-work
         id="project-2"
@@ -297,6 +294,7 @@
         :content="doc.latestWorks.project3"
       />
 
+      <!--
       {{ /* Education */ }}
       <c-box
         v-show="doc.education.isVisible"
