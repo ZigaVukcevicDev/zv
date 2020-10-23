@@ -332,7 +332,6 @@
       </c-box>
       {{ /* / Certificates and conferences */ }}
 
-      <!--
       {{ /* Contact */ }}
       <contact
         id="contact"
