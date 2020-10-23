@@ -123,12 +123,14 @@
           </c-pseudo-box>
           <span v-html="doc.about.heading.part2"></span>
         </c-heading>
+        -->
         <code-blocks
           :contents="[
             { id: 'template', panel: codeBlocks.pronunceName.template },
             { id: 'script', panel: codeBlocks.pronunceName.script },
           ]"
         />
+        <!--
         <c-text
           as="p"
           font-size="24px"
@@ -199,6 +201,7 @@
             </span>
           </c-stat-label>
         </c-stat>
+        -->
         <code-blocks
           :contents="[
             {
@@ -218,6 +221,7 @@
             },
           ]"
         />
+        <!--
         {{ /* / Number of coffee cups drank */ }}
       </c-box>
       {{ /* / Stats */ }}
