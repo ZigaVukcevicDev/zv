@@ -232,6 +232,7 @@
         }"
         :content="doc.skills.main"
       />
+      -->
       <code-blocks
         :contents="[
           {
@@ -244,6 +245,7 @@
           },
         ]"
       />
+      <!--
       {{ /* / My main skills */ }}
 
       {{ /* Latest work - project 1 */ }}
