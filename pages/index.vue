@@ -163,6 +163,7 @@
             {{ doc.stats.part2 }}
           </c-stat-label>
         </c-stat>
+        -->
         <code-blocks
           :contents="[
             {
@@ -182,6 +183,7 @@
             },
           ]"
         />
+        <!--
         {{ /* / Experince period */ }}
         {{ /* Number of coffee cups drank */ }}
         <c-stat v-show="numberOfCoffeeCupsDrank > 0">
