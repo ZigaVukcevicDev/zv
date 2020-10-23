@@ -1,9 +1,5 @@
 <template>
   <c-box v-bind="mainStyles[colorMode]">
-    <div v-if="true">v-if: showing</div>
-    <div v-if="false">v-if: not showing</div>
-    <div v-show="true">v-show: showing</div>
-    <div v-show="false">v-show: not showing</div>
     {{ /* Container */ }}
     <c-box padding-left="10" padding-right="10">
       {{ /* Draft notice */ }}
@@ -72,25 +68,25 @@
               >
             </c-menu-group>
             <c-menu-divider
-              v-show="
+              v-if="
                 doc.education.isVisible ||
                 doc.certificatesAndConferences.isVisible
               "
             />
             <c-menu-group
-              v-show="
+              v-if="
                 doc.education.isVisible ||
                 doc.certificatesAndConferences.isVisible
               "
             >
               <c-menu-item
-                v-show="doc.education.isVisible"
+                v-if="doc.education.isVisible"
                 v-scroll-to="'#education'"
               >
                 Education
               </c-menu-item>
               <c-menu-item
-                v-show="doc.certificatesAndConferences.isVisible"
+                v-if="doc.certificatesAndConferences.isVisible"
                 v-scroll-to="'#certificates-and-conferences'"
               >
                 Certificates and conferences
@@ -178,15 +174,15 @@
         />
         {{ /* / Experince period */ }}
         {{ /* Number of coffee cups drank */ }}
-        <c-stat v-show="numberOfCoffeeCupsDrank > 0">
+        <c-stat v-if="numberOfCoffeeCupsDrank > 0">
           <c-stat-number>
             {{ numberOfCoffeeCupsDrank }}
           </c-stat-number>
           <c-stat-label>
-            <span v-show="numberOfCoffeeCupsDrank === 1">
+            <span v-if="numberOfCoffeeCupsDrank === 1">
               {{ doc.stats.part3.singular }}
             </span>
-            <span v-show="numberOfCoffeeCupsDrank > 1">
+            <span v-if="numberOfCoffeeCupsDrank > 1">
               {{ doc.stats.part3.plural }}
             </span>
           </c-stat-label>
@@ -296,7 +292,7 @@
 
       {{ /* Education */ }}
       <c-box
-        v-show="doc.education.isVisible"
+        v-if="doc.education.isVisible"
         id="education"
         v-waypoint="{
           active: true,
@@ -315,7 +311,7 @@
 
       {{ /* Certificates and conferences */ }}
       <c-box
-        v-show="doc.certificatesAndConferences.isVisible"
+        v-if="doc.certificatesAndConferences.isVisible"
         id="certificates-and-conferences"
         v-waypoint="{
           active: true,
