@@ -25,7 +25,7 @@
               </c-text>
               <nuxt-content :document="content.panel[1]" />
             </div>
-            <div v-if="content.id !== 'cms'">
+            <div v-else>
               <nuxt-content :document="content.panel" />
             </div>
           </c-box>

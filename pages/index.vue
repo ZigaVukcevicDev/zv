@@ -14,8 +14,9 @@
       {{ /* / Draft notice */ }}
 
       {{ /* Side navigation */ }}
+      -->
       <navigation-side :items="navigationItems" />
-
+      <!--
       {{ /* Main navigation */ }}
       <c-box display="flex" width="100%" justify-content="flex-end">
         <c-button
