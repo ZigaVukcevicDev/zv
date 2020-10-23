@@ -214,7 +214,6 @@
       </c-box>
       {{ /* / Stats */ }}
 
-      <!--
       {{ /* My main skills */ }}
       <skills
         id="skills-main"
@@ -225,7 +224,6 @@
         }"
         :content="doc.skills.main"
       />
-      -->
       <code-blocks
         :contents="[
           {
@@ -252,6 +250,7 @@
         :content="doc.latestWorks.project1"
         :has-swiper="true"
       />
+      -->
 
       {{ /* Skills visual output */ }}
       <skills
@@ -264,6 +263,7 @@
         :content="doc.skills.visualOutput"
       />
 
+      <!--
       {{ /* Latest work - project 2 */ }}
       <latest-work
         id="project-2"
