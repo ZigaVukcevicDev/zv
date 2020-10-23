@@ -1,6 +1,11 @@
 <template>
   <c-box v-bind="mainStyles[colorMode]">
-    {{ /* Container */ }}
+    <div v-if="true">v-if: showing</div>
+    <div v-if="false">v-if: not showing</div>
+    <div v-show="true">v-show: showing</div>
+    <div v-show="false">v-show: not showing</div>
+
+    <!-- {{ /* Container */ }}
     <c-box padding-left="10" padding-right="10">
       {{ /* Draft notice */ }}
       <c-box background-color="tomato" width="100%" padding="4" color="white">
@@ -357,9 +362,11 @@
           Website last generated {{ currentTimeStamp() }}.
         </c-text>
       </c-box>
-      <!-- <br />
-      <pre>{{ doc }}</pre> -->
-    </c-box>
+      {{ /*
+        <br />
+      <pre>{{ doc }}</pre>
+      */ }}
+    </c-box> -->
   </c-box>
 </template>
 
