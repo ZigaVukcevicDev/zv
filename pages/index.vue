@@ -135,7 +135,6 @@
         </c-text>
       </c-box>
       {{ /* / About */ }}
-
       {{ /* Stats  */ }}
       <c-box width="100%" padding-top="10" padding-bottom="10">
         {{ /* Experince period */ }}
@@ -209,7 +208,6 @@
         {{ /* / Number of coffee cups drank */ }}
       </c-box>
       {{ /* / Stats */ }}
-
       {{ /* My main skills */ }}
       <skills
         id="skills-main"
@@ -233,7 +231,6 @@
         ]"
       />
       {{ /* / My main skills */ }}
-
       {{ /* Latest work - project 1 */ }}
       <latest-work
         id="project-1"
@@ -245,7 +242,6 @@
         :content="doc.latestWorks.project1"
         :has-swiper="true"
       />
-
       {{ /* Skills visual output */ }}
       <skills
         id="skills-visual-output"
@@ -256,7 +252,6 @@
         }"
         :content="doc.skills.visualOutput"
       />
-
       {{ /* Latest work - project 2 */ }}
       <latest-work
         id="project-2"
@@ -267,7 +262,6 @@
         }"
         :content="doc.latestWorks.project2"
       />
-
       {{ /* Skills programming logic */ }}
       <skills
         id="skills-programming-logic"
@@ -278,7 +272,6 @@
         }"
         :content="doc.skills.programmingLogic"
       />
-
       {{ /* Latest work - project 3 */ }}
       <latest-work
         id="project-3"
@@ -289,7 +282,6 @@
         }"
         :content="doc.latestWorks.project3"
       />
-
       {{ /* Education */ }}
       <c-box
         v-if="doc.education.isVisible"
@@ -308,7 +300,6 @@
         <c-box width="75%" v-html="$md.render(doc.education.richText)" />
       </c-box>
       {{ /* / Education */ }}
-
       {{ /* Certificates and conferences */ }}
       <c-box
         v-if="doc.certificatesAndConferences.isVisible"
@@ -331,7 +322,6 @@
         />
       </c-box>
       {{ /* / Certificates and conferences */ }}
-
       {{ /* Contact */ }}
       {{ /* TODO: fix error DOMException: Failed to execute 'appendChild' on 'Node': This node type does not support this method. */ }}
       <!-- <contact
@@ -343,7 +333,6 @@
         }"
         :content="doc.contact"
       /> -->
-
       {{ /* Footer */ }}
       <c-box width="100%" padding-top="10" padding-bottom="10" margin-top="20">
         <c-text>
