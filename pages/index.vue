@@ -166,7 +166,7 @@
             {
               id: 'cms',
               panel: [
-                cmsImages.cmsImageExperiencePeriod,
+                cmsImages.imageExperiencePeriod,
                 codeBlocks.experiencePeriod.cms,
               ],
             },
@@ -200,7 +200,7 @@
             {
               id: 'cms',
               panel: [
-                cmsImages.cmsImageNumberOfCoffeeCupsDrank,
+                cmsImages.imageNumberOfCoffeeCupsDrank,
                 codeBlocks.numberOfCoffeeCupsDrank.cms,
               ],
             },
@@ -228,7 +228,7 @@
           },
           {
             id: 'cms',
-            panel: [cmsImages.cmsImageSkillsMain, codeBlocks.skills.main.cms],
+            panel: [cmsImages.imageSkillsMain, codeBlocks.skills.main.cms],
           },
         ]"
       />
@@ -333,7 +333,8 @@
       {{ /* / Certificates and conferences */ }}
 
       {{ /* Contact */ }}
-      <contact
+      {{ /* TODO: fix error DOMException: Failed to execute 'appendChild' on 'Node': This node type does not support this method. */ }}
+      <!-- <contact
         id="contact"
         v-waypoint="{
           active: true,
@@ -341,7 +342,7 @@
           options: intersectionOptions,
         }"
         :content="doc.contact"
-      />
+      /> -->
 
       {{ /* Footer */ }}
       <c-box width="100%" padding-top="10" padding-bottom="10" margin-top="20">
@@ -352,10 +353,8 @@
           Website last generated {{ currentTimeStamp() }}.
         </c-text>
       </c-box>
-      {{ /*
-        <br />
+      <br />
       <pre>{{ doc }}</pre>
-      */ }} -->
     </c-box>
     {{ /* / Container */ }}
   </c-box>
@@ -386,9 +385,9 @@ import Skills from '@/components/Skills';
 import LatestWork from '@/components/LatestWork';
 import Contact from '@/components/Contact';
 import CodeBlocks from '@/components/CodeBlocks';
-import cmsImageExperiencePeriod from '@/assets/images/cms/experience-period.png';
-import cmsImageNumberOfCoffeeCupsDrank from '@/assets/images/cms/number-of-coffee-cups-drank.png';
-import cmsImageSkillsMain from '@/assets/images/cms/skills-main.png';
+import imageExperiencePeriod from '@/assets/images/cms/experience-period.png';
+import imageNumberOfCoffeeCupsDrank from '@/assets/images/cms/number-of-coffee-cups-drank.png';
+import imageSkillsMain from '@/assets/images/cms/skills-main.png';
 
 export default {
   name: 'App',
@@ -526,9 +525,9 @@ export default {
         threshold: [0, 1] // [0.25, 0.75] if you want a 25% offset!
       },
       cmsImages: {
-        cmsImageExperiencePeriod,
-        cmsImageNumberOfCoffeeCupsDrank,
-        cmsImageSkillsMain,
+        imageExperiencePeriod,
+        imageNumberOfCoffeeCupsDrank,
+        imageSkillsMain,
       }
     }
   },
