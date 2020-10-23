@@ -2,7 +2,7 @@
   <ul class="navigation-side">
     <li v-for="item in items" :key="item.key">
       <a
-        v-show="item.isVisibleInNavigationSide"
+        v-if="item.isVisibleInNavigationSide"
         v-scroll-to="`#${item.id}`"
         href="#"
       >
