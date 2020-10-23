@@ -4,17 +4,14 @@
     <div v-if="false">v-if: not showing</div>
     <div v-show="true">v-show: showing</div>
     <div v-show="false">v-show: not showing</div>
-
-    <!-- {{ /* Container */ }}
+    {{ /* Container */ }}
     <c-box padding-left="10" padding-right="10">
       {{ /* Draft notice */ }}
       <c-box background-color="tomato" width="100%" padding="4" color="white">
         This is a page draft.
       </c-box>
       {{ /* / Draft notice */ }}
-
       {{ /* Side navigation */ }}
-      -->
       <navigation-side :items="navigationItems" />
       {{ /* Main navigation */ }}
       <c-box display="flex" width="100%" justify-content="flex-end">
@@ -26,7 +23,6 @@
         >
           Switch to mini page
         </c-button>
-
         <c-button
           size="xs"
           variant="outline"
@@ -35,7 +31,6 @@
         >
           Show wireframe
         </c-button>
-
         <c-icon-button
           :icon="colorMode === 'light' ? 'moon' : 'sun'"
           margin-right="3"
@@ -107,7 +102,6 @@
         </c-menu>
       </c-box>
       {{ /* / Main navigation */ }}
-      <!--
       {{ /* About */ }}
       <c-box width="100%">
         <c-heading as="h1">
@@ -123,14 +117,12 @@
           </c-pseudo-box>
           <span v-html="doc.about.heading.part2"></span>
         </c-heading>
-        -->
         <code-blocks
           :contents="[
             { id: 'template', panel: codeBlocks.pronunceName.template },
             { id: 'script', panel: codeBlocks.pronunceName.script },
           ]"
         />
-        <!--
         <c-text
           as="p"
           font-size="24px"
@@ -165,7 +157,6 @@
             {{ doc.stats.part2 }}
           </c-stat-label>
         </c-stat>
-        -->
         <code-blocks
           :contents="[
             {
@@ -185,7 +176,6 @@
             },
           ]"
         />
-        <!--
         {{ /* / Experince period */ }}
         {{ /* Number of coffee cups drank */ }}
         <c-stat v-show="numberOfCoffeeCupsDrank > 0">
@@ -201,7 +191,6 @@
             </span>
           </c-stat-label>
         </c-stat>
-        -->
         <code-blocks
           :contents="[
             {
@@ -221,11 +210,11 @@
             },
           ]"
         />
-        <!--
         {{ /* / Number of coffee cups drank */ }}
       </c-box>
       {{ /* / Stats */ }}
 
+      <!--
       {{ /* My main skills */ }}
       <skills
         id="skills-main"
@@ -373,8 +362,9 @@
       {{ /*
         <br />
       <pre>{{ doc }}</pre>
-      */ }}
-    </c-box> -->
+      */ }} -->
+    </c-box>
+    {{ /* / Container */ }}
   </c-box>
 </template>
 
